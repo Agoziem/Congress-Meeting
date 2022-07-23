@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+    <div class=" container text-center p-3 mt-3">
+        <h2>Photo Gallery</h2>
+        <div class="multiplerule my-3 d-flex justify-content-center">
+            <div class="Nrule"></div>
+            <div class="Nrule2"></div>
+        </div>
+        <p class="text-muted bg-light shadow-sm p-2">View our Photo Gallery to see the Awesome pics of Our Students Cogress at different Moments of the Congress </p>
+    </div>
+    <section id="Files" class="container px-3 mb-5">
+        {% for years in year %}
+        <div class="text-center my-2" style="font-size: 30px ;">" {{ years.topic }} {{ years.Year }} "</div>
+        <div class="grid">
+            {% if years.cate.all %}
+            {% for pic in years.cate.all %}         
+            <a href="{{pic.Photo.url}}"><img src="{{pic.Photo.url}}" alt="Sample photo"></a>   
+            {% endfor %}
+            {% else %}
+            <div class="text-muted text-center" style="font-size: 18px;">Pics not available at the Moment</div>
+            {% endif %}
+            
+        </div>
+        <hr>     
+        {% endfor %}
+    </section>
+
+
+{% endblock %}
+
