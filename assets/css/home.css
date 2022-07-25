@@ -308,5 +308,12 @@ body::before {
     max-width: 100%;
   }
 
-  
+
+
+video{
+  position: relative;
+  width: 100%;
+  top: 0;
+  height: auto;
+}
   

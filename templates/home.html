@@ -172,7 +172,7 @@
                             May the Lord bless us all.
                         </span>
                     </p>
-                    <button class="btn btn-sm" onclick="myFunction()" id="myBtn" style="background-color: orange;">Read
+                    <button class="btn btn-sm" onclick="theFunction()" id="myBtn" style="background-color: orange;">Read
                         more</button>
                 </div>
             </div>
@@ -226,8 +226,10 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="text-center p-0">
-                    <video src="{% static 'videos/Acm congress.mp4'%}" width="300" height="300"  controls loop></video>
+                <div class="text-center mt-4 mt-md-0">
+                    <video controls loop>
+                        <source src="{% static 'videos/Acm congress.mp4'%}" type="video/mp4">
+                    </video>
                 </div>
                 <div class="p-2 mt-2">
                     <div class="mb-2">
