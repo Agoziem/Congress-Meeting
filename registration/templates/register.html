@@ -1,148 +1,131 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content%}
-<div class="container my-5 my-md-5 px-4 px-md-0" style="max-width: 329px;">
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <div class="d-flex align-items-center">
-            <i class="bi bi-check-circle-fill me-3" width="24" height="24"></i>
-            <div>
-                fill out the Form and hit the Submit button
-            </div>
+<div class="container my-5 my-md-5 px-4 px-md-0">
+    <div class="row mt-3 justify-content-center">
+        <div class="col-md-5">
+            <img src="{% static 'images/Students Congress.jpeg' %}" alt="" class="img-fluid img-thumbnail mb-3 mb-md-0" >
         </div>
-        <div class="d-flex align-items-center">
-            <i class="bi bi-check-circle-fill me-3" width="24" height="24"></i>
-            <div>
-                You will see a <strong> Registration id </strong>, note it down
-            </div>
-        </div>
-        
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="col-md-5 d-flex justify-content-center">
+            <div style="max-width: 350px;">
+                 
+                <div id="subregform" class="alert alert-success " role="alert" style="display:none;">
+                  You have Successfully registered for Students Congress 2022
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
 
+    
+                
+
+                <div class="h2">REGISTRATION FORM</div>
+                <div class="multiplerule my-3 d-flex ">
+                    <div class="Nrule"></div>
+                    <div class="Nrule2"></div>
+                </div>
+
+                <!-- Registration Form -->
+
+                <form method="POST" id="Reg_Form">
+                    {% csrf_token %}
+                    <div class=" mb-3">
+                        <label class="form-label" for="name">Name</label>
+                        <input type="text" id="name" name="Name" class="form-control"
+                            placeholder="Surname first eg. Okeke Ifeanyi" required />
+
+                    </div>
+                    <div class=" mb-3">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio1"
+                                value="Male">
+                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio2"
+                                value="Female">
+                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="Phone">Phone number</label>
+                        <input type="text" id="Phone" name="Phonenumber" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="email">Email address</label>
+                        <input type="email" id="email" name="Emailaddress" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="address">Address</label>
+                        <input type="text" id="address" name="address" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="church">church</label>
+                        <input type="text" id="church" name="church" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="zone"> Select your ACM Zone ,if any ( otherwise choose None )
+                        </label>
+                        <select class="form-select" aria-label="Default select example" id="zone" name="zone">
+                            <option selected>Select ...</option>
+                            <option value="Awada">Awada</option>
+                            <option value="Good Shepherd">Good Shepherd</option>
+                            <option value="Holy Trinity">Holy Trinity</option>
+                            <option value="Ugwuagba">Ugwuagba</option>
+                            <option value="None">None</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="status"> Occupation </label>
+                        <select class="form-select" aria-label="Default select example" id="status" name="status"
+                            onchange="myFunction()">
+                            <option>Select ...</option>
+                            <option value="Student">Student</option>
+                            <option value="Youth Corp">Youth Corp</option>
+                            <option value="Business">Business</option>
+                            <option value="Enterprenuer">Enterprenuer</option>
+                            <option value="Civil Servant">Civil Servant</option>
+                            <option value="Politician">Politician</option>
+                            <option value="Private Worker">Private Worker</option>
+                        </select>
+                    </div>
+                    <div id="stucontainer" style="display: none;">
+                        <div class="mb-5">
+                            <label class="form-label" for="school">School</label>
+                            <input type="text" id="school" name="School" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select" aria-label="Default select example" id="level" name="level">
+                                <option selected>Level</option>
+                                <option value="Primary">Primary</option>
+                                <option value="Jss1">Jss1</option>
+                                <option value="Jss2">Jss2</option>
+                                <option value="Jss3">Jss3</option>
+
+                                <option value="Ss1">Ss1</option>
+                                <option value="Ss2">Ss2</option>
+                                <option value="Ss3">Ss3</option>
+                                <option value="Aspirant">Aspirant</option>
+                                <option value="Jupeb">Jupeb</option>
+                                <option value="Pre-Science/Pre-degree">Pre-Science/Pre-degree</option>
+                                <option value="100l">100l</option>
+                                <option value="200l">200l</option>
+                                <option value="300l">300l</option>
+                                <option value="400l">400l</option>
+                                <option value="500l">500l</option>
+                                <option value="600l">600l</option>
+                                <option value="700l">700l</option>
+                                <option value="Graduate">Graduate</option>
+                                <option value="Masters Student">Masters Student</option>
+                                <option value="Phd Student">Phd Student</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn  w-100 mb-4" type="submit" style="background-color: orange;">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
-    {% if registered %}
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert  {{ message.tags }} alert-success alert-dismissible fade show
-      " role="alert">
-          {{ message }} your Registration id is <strong> "ASC {{ id.id }}" </strong>
-        <div><a href="{% url 'home' %}" class="text-decoration-none text-success"> back to Home page </a></div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {% endfor %}
-    {% endif %}
 
-    {% else %}
-
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert  {{ message.tags }} alert-danger alert-dismissible fade show
-      " role="alert">
-          {{ message }}
-        <div><a href="{% url 'home' %}" class="text-decoration-none text-danger"> back to Home page </a></div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {% endfor %}
-    {% endif %}
-    {% endif %}
-
-    <div class="h2">REGISTRATION FORM</div>
-    <div class="multiplerule my-3 d-flex ">
-        <div class="Nrule"></div>
-        <div class="Nrule2"></div>
-    </div>
-    <form action="." method="POST">
-        {% csrf_token %}
-        <div class=" mb-4">
-            <label class="form-label" for="name">Name</label>
-            <input type="text" id="name" name="Name" class="form-control" placeholder="Surname first eg. Okeke Ifeanyi"
-                required />
-
-        </div>
-        <div class=" mb-4">
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Male">
-                <label class="form-check-label" for="inlineRadio1">Male</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Female">
-                <label class="form-check-label" for="inlineRadio2">Female</label>
-            </div>
-        </div>
-        <div class="mb-4">
-            <label class="form-label" for="Phone">Phone number</label>
-            <input type="text" id="Phone" name="Phonenumber" class="form-control" required />
-        </div>
-        <div class="mb-4">
-            <label class="form-label" for="email">Email address</label>
-            <input type="email" id="email" name="Emailaddress" class="form-control" />
-        </div>
-        <div class="mb-5">
-            <label class="form-label" for="address">Address</label>
-            <input type="text" id="address" name="address" class="form-control" required />
-        </div>
-        <div class="mb-5">
-            <label class="form-label" for="church">church</label>
-            <input type="text" id="church" name="church" class="form-control" />
-        </div>
-        <div class="mb-5">
-            <label class="form-label" for="zone"> Select your ACM Zone ,if any ( otherwise choose None ) </label>
-            <select class="form-select" aria-label="Default select example" id="zone" name="zone">
-                <option selected>Select ...</option>
-                <option value="Awada">Awada</option>
-                <option value="Good Shepherd">Good Shepherd</option>
-                <option value="Holy Trinity">Holy Trinity</option>
-                <option value="Ugwuagba">Ugwuagba</option>
-                <option value="None">None</option>
-            </select>
-        </div>
-
-        <div class="mb-5">
-            <label class="form-label" for="status"> Occupation </label>
-            <select class="form-select" aria-label="Default select example" id="status" name="status"
-                onchange="myFunction()">
-                <option>Select ...</option>
-                <option value="Student">Student</option>
-                <option value="Business">Business</option>
-                <option value="Enterprenuer">Enterprenuer</option>
-                <option value="Civil Servant">Civil Servant</option>
-                <option value="Politician">Politician</option>
-                <option value="Private Worker">Private Worker</option>
-            </select>
-        </div>
-        <div id="stucontainer" style="display: none;">
-            <div class="mb-5">
-                <label class="form-label" for="school">School</label>
-                <input type="text" id="school" name="School" class="form-control" />
-            </div>
-            <div class="mb-5">
-                <select class="form-select" aria-label="Default select example" id="level" name="level">
-                    <option selected>Level</option>
-                    <option value="Primary">Primary</option>
-                    <option value="Jss1">Jss1</option>
-                    <option value="Jss2">Jss2</option>
-                    <option value="Jss3">Jss3</option>
-
-                    <option value="Ss1">Ss1</option>
-                    <option value="Ss2">Ss2</option>
-                    <option value="Ss3">Ss3</option>
-                    <option value="Aspirant">Aspirant</option>
-                    <option value="Jupeb">Jupeb</option>
-                    <option value="Pre-Science/Pre-degree">Pre-Science/Pre-degree</option>
-                    <option value="100l">100l</option>
-                    <option value="200l">200l</option>
-                    <option value="300l">300l</option>
-                    <option value="400l">400l</option>
-                    <option value="500l">500l</option>
-                    <option value="600l">600l</option>
-                    <option value="700l">700l</option>
-                    <option value="Graduate">Graduate</option>
-                    <option value="Youth Corp">Youth Corp</option>
-                    <option value="Masters Student">Masters Student</option>
-                    <option value="Phd Student">Phd Student</option>
-                </select>
-            </div>
-        </div>
-        <button class="btn  w-100 mb-4" type="submit" style="background-color: orange;">Submit</button>
-    </form>
 </div>
+<script src="{% static 'js/Register.js' %}"></script>
 {% endblock %}

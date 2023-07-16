@@ -7,10 +7,10 @@ admin.site.register(Streaminglink)
 
 @admin.register(data)
 class DataAdmin(admin.ModelAdmin):
-    list_display=('id','name','Occupation','date_registered')
+    list_display=('id','name','Occupation','date_registered','Attended')
     ordering=('name','date_registered')
     search_fields=('id','name','Zone','gender','Church','Occupation','School','level',)
-    list_filter=('Occupation','level','Zone','gender',)
+    list_filter=('Attended','Occupation','level','Zone','gender',)
 
 @admin.register(Subcription)
 class SubAdmin(admin.ModelAdmin):

@@ -14,7 +14,7 @@ function theFunction() {
   }
 }
 
-var countDownDate = new Date("Aug 5, 2022 15:00:00").getTime();
+var countDownDate = new Date("Aug 4, 2023 15:00:00").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function () {
@@ -48,21 +48,47 @@ var x = setInterval(function () {
 }, 1000);
 
 
-function myFunction() {
-  var x = document.getElementById("status").value;
-  var studentcontainer = document.getElementById("stucontainer");
-  if( x === 'Student'){
-    
-    studentcontainer.style.display='block';
-  } else{
-    studentcontainer.style.display='none';
-  }
-}
 
 
-var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
 
-myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
+// var myModal = document.getElementById('myModal')
+// var myInput = document.getElementById('myInput')
+
+// myModal.addEventListener('shown.bs.modal', function () {
+//   myInput.focus()
+// })
+
+var subform = document.getElementById('sub_form');
+
+subform.addEventListener('submit', function (e) {
+  e.preventDefault()
+  submitsubformdata()
 })
+
+function submitsubformdata() {
+  var userdata = {
+    'email': subform.email.value,
+  }
+
+  var url = '/subscription/'
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'content-Type': 'application/json',
+      'X-CSRFToken': csrftoken
+    },
+    body: JSON.stringify({ 'userdata': userdata })
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      var successAlert = document.querySelector('#sub_form_alert_success');
+      successAlert.style.display = 'flex';
+      subform.reset();
+      setTimeout(function() {
+        successAlert.style.display = 'none';
+      }, 3000);
+      console.log('Data :', data)
+    })
+}

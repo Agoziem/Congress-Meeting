@@ -38,13 +38,13 @@ ALLOWED_HOSTS = ['127.0.0.1','student-congress.herokuapp.com','www.acmstudentsfo
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Directory',
     'Photogallery',
     'registration',
     'django_admin_logs',
@@ -165,6 +165,15 @@ MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 # DEFAULT_FILE_STORAGE='Congressapp.storages.MediaStore'
 
 
-if os.getcwd() == '/app':
-	SECURE_PROXY_SSL_HEADER=('HTTP_X_FORWARDING_PROTO','https')
-	SECURE_SSL_REDIRECT=True
+# if os.getcwd() == '/app':
+# 	SECURE_PROXY_SSL_HEADER=('HTTP_X_FORWARDING_PROTO','https')
+# 	SECURE_SSL_REDIRECT=True
+
+JAZZMIN_SETTINGS = {
+    # "site_logo": "images/GEM LOGO 3 Website Icon.png",
+    "site_logo_classes": "img-circle",
+    "login_logo": None,
+    "copyright": "Student Congress 2023",
+    "show_ui_builder":True,
+    # "custom_css": "css/admin.css",
+}

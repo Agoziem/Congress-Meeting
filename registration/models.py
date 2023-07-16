@@ -7,6 +7,7 @@ GENDERCHOICES = (
 )
 STATUSCHOICES = (
     ('Student', 'Student'),
+    ('Youth Corp', 'Youth Corp'),
     ('Business', 'Business'),
     ('Enterprenuer', 'Enterprenuer'),
     ('Civil Servant', 'Civil Servant'),
@@ -36,7 +37,6 @@ LEVELCHOICES = (
     ('600l', '600l'),
     ('700l', '700l'),
     ('Graduate', 'Graduate'),
-    ('Youth Corp', 'Youth Corp'),
     ('Masters Student', 'Masters Student'),
     ('Phd Student', 'Phd Student'),
 
@@ -66,12 +66,14 @@ class data(models.Model):
     School= models.CharField(max_length= 300, blank=True)
     level= models.CharField(max_length= 300, blank=True , choices=LEVELCHOICES)
     date_registered=models.DateTimeField(auto_now_add=True)
+    Attended=models.BooleanField(default=False)
     
     def __str__(self):
         return str(self.name)
 
 class Streaminglink(models.Model):
     Mixlr=models.CharField(max_length= 300, blank=True)
+    Telegram=models.CharField(max_length= 300, blank=True)
 
     def __str__(self):
         return str(self.Mixlr)

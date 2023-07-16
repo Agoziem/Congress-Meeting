@@ -12,7 +12,7 @@ urlpatterns = [
     path('subscription/', subscription ,name='Subscription'),
     path('Photogallery/', include('Photogallery.urls')),
     path('registration/', include('registration.urls')),
-    path('Directory/', include('Directory.urls')),
+    # path('Directory/', include('Directory.urls')),
    
 ]
 

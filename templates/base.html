@@ -6,6 +6,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/ACM Logo.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/ACM Logo.png' %}">
+    <link rel="icon" type="image/png" sizes="48x48" href="{% static 'images/ACM Logo.png' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -18,11 +21,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
     
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    
-
-   
-
     <title>Students Congress</title>
+    <script>
+        var user = '{{request.user}}'
+
+        function getToken(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getToken('csrftoken')
+    </script>
 </head>
 
 <body class="position-relative d-flex flex-column min-vh-100">
@@ -60,7 +79,9 @@
                     <li class="nav-item me-2">
                         <a href="{% url 'Photogallery:photos' %}" class="nav-link text-light">Photo gallery</a>
                     </li>
-
+                    <li class="nav-item me-2">
+                        <a href="/admin" target="_blank" class="nav-link text-light">Admin</a>
+                    </li>
                 </ol>
             </div>
         </div>
@@ -82,7 +103,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
-    <script src="{% static 'js/script.js' %}"></script>
+ 
 </body>
 
 </html>

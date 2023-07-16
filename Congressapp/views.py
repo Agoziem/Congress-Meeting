@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from registration.models import *
 from django.contrib import messages
-
+from django.http import JsonResponse
+import json
 
 def home_view(request):
     link=Streaminglink.objects.all()
@@ -18,20 +19,9 @@ def home_view(request):
 
 
 def subscription(request):
-    Submitted=False
-    if request.method=='POST':
-         Sub=request.POST.get('sub')
-         Subcription.objects.create(
-            email=Sub
-         )
-         Submitted=True
-         context={
-            'submitted': Submitted,
-         }
-         
-         return render(request,'home.html',context)
-    context={
-            'submitted': Submitted,
-         }
-    return render(request,'home.html',context)
+    data=json.loads(request.body)
+    subemail=data['userdata']['email']
+    sub_email=Subcription.objects.create(email=subemail)
+    sub_email.save()
+    return JsonResponse('submitted successfully',safe=False)
          

@@ -10,11 +10,11 @@
                 <br><span class="text-light" style="font-weight: 500;"> DIOCESE ON THE NIGER </span>
             </div>
             <div class=" align-items-center pe-2" style="color:orange;">
-                <a href="/admin" class="text-light text-decoration-none"><i class="bi bi-lock-fill h4 me-1"
-                        style="color: orange;"></i>
+                <a href="/admin" class="text-light text-decoration-none" target="_blank"><i
+                        class="bi bi-lock-fill h4 me-1" style="color: orange;"></i>
                     Admin </a>
-                <a href="{% url 'Directory:directory' %}" class="text-light text-decoration-none"><i
-                        class="bi bi-journals h4 me-1 ms-4" style="color: orange;"></i>
+                <a href="#" class="text-light text-decoration-none"><i class="bi bi-journals h4 me-1 ms-4"
+                        style="color: orange;"></i>
                     Online Directory </a>
             </div>
         </div>
@@ -37,7 +37,7 @@
                     <h3 class="animate__animated animate__fadeInRight" style="animation-delay: 1s;color:white;">
                         Gathering of Believers,Students and Teenagers </h3>
                     <p id="tag" class="animate__animated animate__fadeInLeft" style="animation-delay: 2s;"> Student
-                        Congress 22' </p>
+                        Congress 23' </p>
                     <P><a href="{% url 'registration:register' %}"
                             class="animate__animated animate__fadeInBottomLeft text-decoration-none"
                             style="animation-delay: 3s;">Register now</a></P>
@@ -52,7 +52,7 @@
                             Engaging &
                             gaining Mastery</h3>
                         <p id="tag" class="animate__animated animate__fadeInRight" style="animation-delay: 2s;">
-                            Student Congress 22'</p>
+                            Student Congress 23'</p>
                         <P><a href="{% url 'registration:register' %}"
                                 class="animate__animated animate__fadeInRight text-decoration-none animate__fadeInDown"
                                 style="animation-delay: 3s;">Register now</a></P>
@@ -69,7 +69,7 @@
                             Joy in the HolyGhost
                         </h3>
                         <p id="tag" class="animate__animated animate__fadeInRight" style="animation-delay: 2s;">
-                            Student Congress 22'</p>
+                            Student Congress 23'</p>
                         <P><a href="{% url 'registration:register' %}"
                                 class="animate__animated animate__fadeInBottomRight text-decoration-none animate__fadeInTopRight"
                                 style="animation-delay: 3s;">Register now</a>
@@ -86,7 +86,7 @@
                             breeding and
                             raising leaders of Tomorrow</h3>
                         <p id="tag" class="animate__animated animate__fadeInLeft" style="animation-delay: 2s;">
-                            Student Congress 22'</p>
+                            Student Congress 23'</p>
                         <P><a href="{% url 'registration:register' %}"
                                 class="animate__animated animate__fadeInBottomLeft text-decoration-none"
                                 style="animation-delay: 3s;">Register now</a></P>
@@ -101,7 +101,7 @@
                         <h3 class="animate__animated animate__fadeInLeft " style="animation-delay: 1s; color:white;">
                             Life changing Encounters </h3>
                         <p id="tag" class="animate__animated animate__fadeInDown" style="animation-delay: 2s;">
-                            Student Congress 22'</p>
+                            Student Congress 23'</p>
                         <P><a href="{% url 'registration:register' %}"
                                 class="animate__animated animate__fadeInBottomRight text-decoration-none"
                                 style="animation-delay: 3s;">Register now
@@ -118,21 +118,21 @@
 <!-- from the desk of the Cordinator -->
 
 <section id="about" class="p-5 py-2">
-    <div class="container px-2">
+    <div class="container">
         <div class="text-center my-2" style="font-size: 25px;">Count down to Students Congress 2022</div>
         <div class="d-flex justify-content-center align-items-center">
-            <div class="Nrule"></div>
+            <div class="Nrule d-none d-md-block"></div>
 
             <div class="card rounded p-2 ms-2 shadow-sm" id="days"
-                style="background-color:#000;color: orange; font-size: 8px; font-weight: 500;"></div>
+                style="background-color:#000;color: orange; font-size: 15px; font-weight: 500;"></div>
             <div class="card p-2 ms-2 shadow-sm" id="hours"
-                style="background-color:#000;color: orange;font-size: small;font-weight: 500;"></div>
+                style="background-color:#000;color: orange;font-size: 15px;font-weight: 500;"></div>
             <div class="card p-2 ms-2 shadow-sm" id="minutes"
-                style="background-color:#000;color: orange; font-size: small;font-weight: 500;"></div>
+                style="background-color:#000;color: orange; font-size: 15px;font-weight: 500;"></div>
             <div class="card p-2 ms-2 shadow-sm" id="seconds"
-                style="background-color:#000;color: orange; font-size: 8px;font-weight: 500;"></div>
+                style="background-color:#000;color: orange; font-size: 15px;font-weight: 500;"></div>
 
-            <div class="Nrule2 ms-2"></div>
+            <div class="Nrule2 ms-2 d-none d-md-block"></div>
         </div>
         <div class="row justify-content-center align-items-center">
             <div class="col-md-4">
@@ -191,11 +191,11 @@
 <hr>
 <!-- Registration form and Streaming Platforms  -->
 <section id="Register" class="p-5">
-    <div class="container px-0 px-md-2">
+    <div class="container px-0">
         <div class="row justify-content-center align-items-start">
-            <div class="col-md-4">
-                <a href="{% static 'images/acm congress.jpg' %}"><img src="{% static 'images/acm congress.jpg' %}"
-                        alt="" class="img-fluid"></a>
+            <div class="col-md-4 pe-0 pe-md-5">
+                <a href="{% static 'images/Students Congress.jpeg' %}"><img src="{% static 'images/Students Congress.jpeg' %}"
+                        alt="" class="img-fluid img-thumbnail"></a>
                 <p class="text-secondary mt-3">click the flier , to expand <i class="bi bi-arrows-expand"></i></p>
 
                 <div class="text-center">
@@ -215,6 +215,8 @@
                     {% endif %}
                     <img src="{% static 'images/Mixlr-removebg-preview.png' %}" alt="" class="img-fluid"
                         style="max-width:100px;">
+                    <img src="{% static 'images/Telegram Icon.png' %}" alt="" class="img-fluid ms-3"
+                        style="max-width:40px;">
                     <div class="d-flex align-items-center justify-content-center mt-4">
                         <div id="day" style="font-size:60px;color:#000; font-weight: 600;"></div>
                         <div class="ms-1 px-3 py-1 shadow-sm"
@@ -226,7 +228,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 ps-0 ps-md-5">
                 <div class="text-center mt-4 mt-md-0">
                     <video controls loop>
                         <source src="{% static 'videos/Acm congress.mp4'%}" type="video/mp4">
@@ -234,21 +236,21 @@
                 </div>
                 <div class="p-2 mt-2">
                     <div class="mb-2">
-                        <span class="fw-bold"><i class="bi bi-calendar-event-fill me-2 h4"
-                                style="color: orange ;"></i></span> PROGRAMME SCHEDULE <br>
-                        <li class="my-2 ps-3">5th Friday - 7th Sunday </li>
+                        <span class="fw-bold"><i class="bi bi-calendar-event-fill me-2 h4" style="color: orange ;"></i>
+                            PROGRAMME SCHEDULE </span><br>
+                        <li class="my-2 ps-3">4th Friday - 6th Sunday </li>
 
                     </div>
                     <div class="mb-2">
-                        <span class="fw-bold"><i class="bi bi-clock-fill me-2 h4" style="color: orange ;"></i></span>
-                        TIME <br>
+                        <span class="fw-bold"><i class="bi bi-clock-fill me-2 h4" style="color: orange ;"></i>
+                            TIME </span><br>
                         <li class="my-2 ps-3">5:00pm dot - Friday </li>
                         <li class="my-2 ps-3">10:00am dot - Saturday </li>
                         <li class="my-2 ps-3">1:00pm dot - Sunday </li>
                     </div>
                     <div>
-                        <span class="fw-bold"><i class="bi bi-geo-alt-fill me-2 h3" style="color: orange ;"></i></span>
-                        Good Shepherd Anglican Church Awada
+                        <span class="fw-bold"><i class="bi bi-geo-alt-fill me-2 h3" style="color: orange ;"></i>
+                            Good Shepherd Anglican Church Awada</span>
                     </div>
                 </div>
 
@@ -256,9 +258,9 @@
         </div>
     </div>
 </section>
-<hr>
+<!-- <hr> -->
 <!-- Speakers Profile -->
-<section class="p-2" id="profile">
+<!-- <section class="p-2" id="profile">
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-md-3">
@@ -325,7 +327,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 
 <hr>
@@ -373,22 +375,27 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-md-4 mb-3 text-center text-light">
                 <div class=" px-2 mb-3">
-                    {% if submitted %}
-                    <p>we have successfully recieved your Email , we will keep you Posted , with our Programme Updates
-                        and lot more </p>
-                    {% else %}
-                    <form action="{% url 'Subscription' %}" method="POST">
+                    
+                    <!-- Submitted Successful Alert -->
+                    <div id="sub_form_alert_success" class="alert alert-success" style="display: none;">
+                        <i class="bi bi-check-circle-fill mx-2 text-success h5"></i>
+                        <div>
+                            Your email has been sent successfully!
+                        </div>
+                    </div>
+
+                    <!-- Subscription form -->
+                    <form method="POST" id="sub_form">
                         {% csrf_token %}
                         <h5 style="color: orange;">Subscribe to our newsletter</h5>
                         <p> to continue to get Notifications of our Congress and other Programme Updates</p>
                         <div class="input-group news-input">
-                            <input type="email" class="form-control" placeholder="Enter Email" name="sub" />
-                            <button class="btn btn-md" type="submit" value="Save"
-                                style="background-color: orange; color: black;" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">Submit</button>
+                            <input type="email" class="form-control" placeholder="Enter Email" name="email" />
+                            <button class="btn btn-md" type="submit" value="submit"
+                                style="background-color: orange; color: black;">Submit</button>
                         </div>
                     </form>
-                    {% endif %}
+                
                     <div class="my-3">
                         <p style="color: orange;">follow us on our Social Media Platform</p>
                         <div>
@@ -489,6 +496,5 @@
         </div>
     </div>
 </section>
-
-
+<script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
