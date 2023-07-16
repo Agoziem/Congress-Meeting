@@ -1,9 +1,6 @@
 from django.contrib import admin
 from .models import *
 
-
-
-
 # admin.site.register(data)
 # admin.site.register(Subcription)
 admin.site.register(Streaminglink)

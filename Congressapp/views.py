@@ -10,6 +10,12 @@ def home_view(request):
     }
     return render(request,'home.html',context)
 
+# def index_view(request):  
+    context={
+        
+    }
+    return render(request,'index.html',context)
+
 
 def subscription(request):
     Submitted=False
