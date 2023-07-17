@@ -139,38 +139,23 @@
                 <div class="p-3 my-4 mb-md-0 bg-light" style="font-size: 14px; border-left: orange 2px solid;">
                     <p><span class="fw-bold h3">From the Student's Corner:</span><br><br>
 
-                        Greetings Beloved,
-                        Blessed be the Father our of Lord Jesus and to our Lord Jesus and to his Holy Spirit. Amen
-                        I greet everyone in this group; our leaders, elders and friends for all our labours in this
-                        platform. May the Lord bless us all in his name. Amen
+                        After last year's Congress where we considered, "the cost of discipleship", Jesus began to
+                        emphasize that his disciples who has accepted to follow should press for more of his realities
+                        and power because he died for more. So I asked him, what do that mean and how do we come into
+                        these more that he is speaking about?
+                        In response he said that there are basic principles in the kingdom upon which the kingdom runs.
+                        He then revealed that the only way a man can enter into more of his realities and power is to
+                        prove Faithful in the little things that has been committed into his/her hand. So he demanded
+                        that we charge his people to be true and faithful in little, then the more will begin to come.
 
-                        It is no longer a news to many of us of our upcoming STUDENTS CONGRESS, but this is an
-                        official way of making it open to the general house.
-                        By the grace of our Lord Jesus, a lot has been put up and in place in seeing the Students
-                        Congress 2022 be a successful one.
-
-                        Through the mercies of God, we celebrated a successful 2021 Student Congress in which God
-                        gave the theme, "Conviction"<span id="dots">...</span><span id="more"> He was available to
-                            crack the theme for us and to do good justice to it through his vessels, Bro. Chigozie
-                            Nnamdi and Dr. Emeka Udeh. Blessed be God forever. Amen.
-
-                            To the glory of God, he has made open to us his heart towards this year's students
-                            Congress and by the privilege given to me and my team to be at the driver's seat in this
-                            year's Students Congress, we submitted to the entire house the theme for this year's
-                            Students Congress,
-                            "The Cost of Discipleship" - Luke 14:25-33.
-                            Jesus opened our eyes on the fact that the church has recorded a good number of people
-                            who are believed to be believers but He does not have many disciples because the people
-                            seem not to understand what it means or know the cost. He emphasized more that the
-                            revival will be pushed by his disciples, not just every believer (who are just there)
-                            who have really followed and had learned of him the ways of his kingdom. He lastly
-                            showed us how it's going to be a build up from the last year's Congress, "Conviction".
-
-                            Finally, I beseech us brethren to keep up with us in every way to see this year's
-                            Students Congress meet the expectations God has for it; in financial supporting, in
-                            praying and above all your availability.
-
-                            May the Lord bless us all.
+                        <span id="dots">...</span><span id="more">
+                            Therefore, it is from this discussion that the theme for the congress was given as Faithful
+                            in
+                            little from Luke 19:17 and Luke (16:1-12). So we trust Jesus that he will open our eyes to
+                            look
+                            around us in those things in our hands already touching different aspects of life and making
+                            a
+                            conscious decision to be faithful in them.
                         </span>
                     </p>
                     <button class="btn btn-sm" onclick="theFunction()" id="myBtn" style="background-color: orange;">Read
@@ -194,47 +179,50 @@
     <div class="container px-0">
         <div class="row justify-content-center align-items-start">
             <div class="col-md-4 pe-0 pe-md-5">
-                <a href="{% static 'images/Students Congress.jpeg' %}"><img src="{% static 'images/Students Congress.jpeg' %}"
-                        alt="" class="img-fluid img-thumbnail"></a>
+                <a href="{% static 'images/Student Congress.jpeg' %}"><img
+                        src="{% static 'images/Student Congress.jpeg' %}" alt="" class="img-fluid img-thumbnail"></a>
                 <p class="text-secondary mt-3">click the flier , to expand <i class="bi bi-arrows-expand"></i></p>
 
-                <div class="text-center">
-                    <div class="mb-2" style="font-size: 23px; font-weight: 400;"> You can stream with us on Mixlr
-                    </div>
-                    {% if link %}
-                    {% for Mixlr in link %}
-                    <p class="small p-3 bg-light"><a href="{{ Mixlr.Mixlr }}"
-                            class="text-decoration-none me-3 text-dark">{{ Mixlr.Mixlr }}</a><i
-                            class="bi bi-info rounded-circle p-1 ms-1"
-                            style="background-color: orange; color:#000;"></i></p>
-                    {% endfor %}
-                    {% else %}
-                    <p class="small p-3 bg-light">link will be available Soon , keep checking back <i
-                            class="bi bi-info rounded-circle p-1 ms-1"
-                            style="background-color: orange; color:#000;"></i></p>
-                    {% endif %}
-                    <img src="{% static 'images/Mixlr-removebg-preview.png' %}" alt="" class="img-fluid"
-                        style="max-width:100px;">
-                    <img src="{% static 'images/Telegram Icon.png' %}" alt="" class="img-fluid ms-3"
-                        style="max-width:40px;">
-                    <div class="d-flex align-items-center justify-content-center mt-4">
-                        <div id="day" style="font-size:60px;color:#000; font-weight: 600;"></div>
-                        <div class="ms-1 px-3 py-1 shadow-sm"
-                            style="background-color: #000;color: orange; border-radius: 10px;"><i> Days to go </i>
-                        </div>
-                    </div>
-                    <div><a href="{% url 'registration:register' %}"
-                            class="text-decoration-none btn btn-outline-primary ">Register Now and get a Reg Id </a>
-                    </div>
+                <div class="d-flex justify-content-center ">
+                    <a href="{% url 'registration:register' %}"
+                        class="text-decoration-none btn btn-outline-primary ">Register Now , to secure a Spot</a>
                 </div>
             </div>
+
             <div class="col-md-4 ps-0 ps-md-5">
                 <div class="text-center mt-4 mt-md-0">
-                    <video controls loop>
+                    <!-- <video controls loop>
                         <source src="{% static 'videos/Acm congress.mp4'%}" type="video/mp4">
-                    </video>
+                    </video> -->
+                    <div class="text-center">
+                        <div class="mb-2" style="font-size: 23px; font-weight: 400;"> You can stream with us on Mixlr
+                        </div>
+                        {% if link %}
+                        {% for Mixlr in link %}
+                        <p class="small p-3 bg-light"><a href="{{ Mixlr.Mixlr }}"
+                                class="text-decoration-none me-3 text-dark">{{ Mixlr.Mixlr }}</a><i
+                                class="bi bi-info rounded-circle p-1 ms-1"
+                                style="background-color: orange; color:#000;"></i></p>
+                        {% endfor %}
+                        {% else %}
+                        <p class="small p-3 bg-light">link will be available Soon , keep checking back <i
+                                class="bi bi-info rounded-circle p-1 ms-1"
+                                style="background-color: orange; color:#000;"></i></p>
+                        {% endif %}
+                        <img src="{% static 'images/Mixlr-removebg-preview.png' %}" alt="" class="img-fluid"
+                            style="max-width:100px;">
+                        <img src="{% static 'images/Telegram Icon.png' %}" alt="" class="img-fluid ms-3"
+                            style="max-width:40px;">
+                        <div class="d-flex align-items-center justify-content-center mt-4">
+                            <div id="day" style="font-size:60px;color:#000; font-weight: 600;"></div>
+                            <div class="ms-1 px-3 py-1 shadow-sm"
+                                style="background-color: #000;color: orange; border-radius: 10px;"><i> Days to go </i>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="p-2 mt-2">
+                <div class="p-4 mt-2 bg-light shadow-sm">
                     <div class="mb-2">
                         <span class="fw-bold"><i class="bi bi-calendar-event-fill me-2 h4" style="color: orange ;"></i>
                             PROGRAMME SCHEDULE </span><br>
@@ -375,7 +363,7 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-md-4 mb-3 text-center text-light">
                 <div class=" px-2 mb-3">
-                    
+
                     <!-- Submitted Successful Alert -->
                     <div id="sub_form_alert_success" class="alert alert-success" style="display: none;">
                         <i class="bi bi-check-circle-fill mx-2 text-success h5"></i>
@@ -395,7 +383,7 @@
                                 style="background-color: orange; color: black;">Submit</button>
                         </div>
                     </form>
-                
+
                     <div class="my-3">
                         <p style="color: orange;">follow us on our Social Media Platform</p>
                         <div>
@@ -425,7 +413,7 @@
                         </h2>
                         <div id="flush-collapseOne" class="accordion-collapse collapse"
                             aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body"> Its Starting on Friday 5th of August 2022 </div>
+                            <div class="accordion-body"> Its Starting on Friday 4th of August 2022 </div>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -452,7 +440,7 @@
                             </h2>
                             <div id="flush-collapseThree" class="accordion-collapse collapse"
                                 aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Evang Uche Anyanwu <a href="#profile"> View his Profile </a>
+                                <div class="accordion-body">Bro. Henry Nwamadi
                                 </div>
                             </div>
                         </div>
@@ -466,7 +454,7 @@
                             </h2>
                             <div id="flush-collapseFour" class="accordion-collapse collapse"
                                 aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body"> Nope , it holds from Friday 5th to Sunday 7th
+                                <div class="accordion-body"> No , it holds from Friday 5th to Sunday 7th
                                 </div>
                             </div>
                         </div>
@@ -475,18 +463,18 @@
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#flush-collapseFive" aria-expanded="false"
                                     aria-controls="flush-collapseFive">
-                                    How many Seminars , are we going to have in the Congress
+                                    What are the Seminars we are going to be having during the Congress and who are the
+                                    Facilitators
                                 </button>
                             </h2>
                             <div id="flush-collapseFive" class="accordion-collapse collapse"
                                 aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
-                                    <li> Christian and Politics by <span class="fw-bold"> Bro Chigozie Nnamdi</span>
+                                    <li> Seminar Topic: <span class="fw-bold"> Stewardship</span>
                                     </li>
-                                    <li> Academic Excellence by <span class="fw-bold"> Bro Miracle Aguinem </span>
+                                    <li> Junior class: <span class="fw-bold">Ezz Mrs Esther Aniamalu</span>
                                     </li>
-                                    <li> Sexual purity by <span class="fw-bold"> Bro Miracle Aguinem </span></li>
-                                    <li> Kingdom Influence by <span class="fw-bold"> Bro Chinedu Okafor </span></li>
+                                    <li> Senior class:<span class="fw-bold">Pst. Chijioke Nnaemeka </span></li>
                                 </div>
                             </div>
                         </div>

@@ -9,7 +9,8 @@ function myFunction() {
     }
   }
 
-  var Regform = document.getElementById('Reg_Form');
+var Regform = document.getElementById('Reg_Form');
+var successDIV = document.getElementById('successdiv');
 
 Regform.addEventListener('submit', function (e) {
   e.preventDefault()
@@ -43,12 +44,14 @@ function submitsubformdata() {
       return response.json();
     })
     .then((data) => {
-      var successAlert = document.querySelector('#subregform');
-      successAlert.style.display = 'flex';
       Regform.reset();
-      setTimeout(function() {
-        successAlert.style.display = 'none';
-      }, 3000);
+      Regform.style.display = 'none';
+      successDIV.style.display = 'block';
       console.log('Data :', data)
     })
+}
+
+function removesuccessdiv(){
+  Regform.style.display = 'block';
+  successDIV.style.display = 'none';
 }
