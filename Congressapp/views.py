@@ -11,11 +11,13 @@ def home_view(request):
     }
     return render(request,'home.html',context)
 
-# def index_view(request):  
+def data_view(request):
+    allData=data.objects.all()
     context={
-        
+        'allData': allData,
     }
-    return render(request,'index.html',context)
+    return render(request,'data.html',context)
+
 
 
 def subscription(request):

@@ -1,13 +1,14 @@
 
 from django.contrib import admin
 from django.urls import path,include
-from .views import home_view,subscription
+from .views import home_view,subscription,data_view
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view,name='home'),
+    path('data/', data_view,name='data'),
     # path('dashboard/',index_view, name='dashboard'),
     path('subscription/', subscription ,name='Subscription'),
     path('Photogallery/', include('Photogallery.urls')),
