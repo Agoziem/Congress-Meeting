@@ -15,3 +15,25 @@ class DataAdmin(admin.ModelAdmin):
 @admin.register(Subcription)
 class SubAdmin(admin.ModelAdmin):
     search_fields=('email',)
+
+
+@admin.register(Zone)
+class ZoneAdmin(admin.ModelAdmin):
+    search_fields=('zone',)
+    list_display=('zone',)
+    ordering=('zone',)
+    list_filter=('zone',)
+
+@admin.register(Level)
+class LevelAdmin(admin.ModelAdmin):
+    search_fields=('level',)
+    list_display=('level',)
+    ordering=('level',)
+    list_filter=('level',)
+
+@admin.register(Status)
+class StatusAdmin(admin.ModelAdmin):
+    search_fields=('status',)
+    list_display=('status',)
+    ordering=('status',)
+    list_filter=('status',)

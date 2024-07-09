@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'Photogallery',
     'registration',
     'django_admin_logs',
+    'Event',
 ]
 
 MIDDLEWARE = [

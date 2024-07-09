@@ -1,58 +1,80 @@
 from django.shortcuts import render
 from .models import *
+from Event.models import *
 from django.contrib import messages
 from django.http import JsonResponse
 import json
+from django.shortcuts import get_object_or_404
 
 def register(request):    
-    # try:
-    #     mydata=data.objects.get(name=Name)
-    #     Registered=True
-    #     context={
-    #         'id': mydata,
-    #         'registered':Registered,     
-    #     }
-    #     messages.success(request,'You have Successfully registered for Students Congress 2022')
-    #     return render(request,'register.html',context)
-    # except:
-    #     # mydata=data.objects.get(name=Name)
-    #     # mydata.delete()
-    #     Registered=False
-    #     context={
-    #         'registered':Registered,
-            
-    #     }
-    #     messages.error(request,'You have already Submitted, multiple instances cannot be recorded')
+    zones=Zone.objects.all()
+    levels=Level.objects.all()
+    Occupation=Status.objects.all()
+    programme = Programme.objects.all().order_by("updated_at").first()
     context={
-
+        'zones':zones,
+        'levels':levels,
+        'Occupation':Occupation,
+        'programme':programme
     }
     return render(request,'register.html',context)
 
+# -----------------------------------------
+# Submit registration form
+# -----------------------------------------
+from django.http import JsonResponse
+import json
 
 def Submitregistrationform(request):
-    subdata=json.loads(request.body)
-    name=subdata['userdata']['name']
-    gender=subdata['userdata']['gender']
-    Phonenumber=subdata['userdata']['Phonenumber']
-    Emailaddress=subdata['userdata']['Emailaddress']
-    address=subdata['userdata']['address']
-    church=subdata['userdata']['church']
-    zone=subdata['userdata']['zone']
-    status=subdata['userdata']['status']
-    School=subdata['userdata']['School']
-    level=subdata['userdata']['level']
+    subdata = json.loads(request.body)
+    name = subdata['name']
+    gender = subdata['gender']
+    Phonenumber = subdata['Phonenumber']
+    Emailaddress = subdata['Emailaddress']
+    address = subdata['address']
+    church = subdata['church']
+    zone = subdata['zone']
+    status = subdata['status']
+    School = subdata['School']
+    level = subdata['level']
 
-    sub_data=data.objects.create(
-			name=name,
-			gender=gender,
-			address=address,
-			Phonenumber=Phonenumber,
-			Emailaddress=Emailaddress,
-			Occupation=status,
-			School=School,
-			Church=church,
-			Zone=zone,
-			level=level
-        )
-    sub_data.save()
-    return JsonResponse('submitted successfully',safe=False)
+    registereddata, created = data.objects.get_or_create(name=name)
+    registereddata.gender = gender
+    registereddata.address = address
+    registereddata.Phonenumber = Phonenumber
+    registereddata.Emailaddress = Emailaddress
+    registereddata.Occupation = status
+    registereddata.School = School
+    registereddata.Church = church
+    registereddata.Zone = zone
+    registereddata.level = level
+    registereddata.save()
+
+    print(registereddata)
+    return JsonResponse('submitted successfully', safe=False)
+
+
+def search_users(request):
+    if request.method == 'GET' and 'name' in request.GET:
+        search_name = request.GET.get('name')
+        # Perform a case-insensitive search for names containing the search query
+        results = data.objects.filter(name__icontains=search_name).values('id', 'name')
+        return JsonResponse(list(results), safe=False)
+    return JsonResponse([], safe=False)
+
+def user_details(request, user_id):
+    user = get_object_or_404(data, id=user_id)
+    userdata = {
+        'name': user.name,
+        'gender': user.gender,
+        'address': user.address,
+        'church': user.Church,
+        'phonenumber': user.Phonenumber,
+        'emailaddress': user.Emailaddress,
+        'zone': user.Zone,
+        'occupation': user.Occupation,
+        'school': user.School,
+        'level': user.level
+        # Add more fields as necessary
+    }
+    return JsonResponse(userdata)

@@ -5,6 +5,8 @@ GENDERCHOICES = (
     ('Male', 'Male'),
     ('Female', 'Female'),
 )
+
+
 STATUSCHOICES = (
     ('Student', 'Student'),
     ('Youth Corp', 'Youth Corp'),
@@ -13,11 +15,14 @@ STATUSCHOICES = (
     ('Civil Servant', 'Civil Servant'),
     ('Politician', 'Politician'),
     ('Private Worker', 'Private Worker'),
-
-
-
-
 )
+
+class Status(models.Model):
+    status= models.CharField(max_length= 300, blank=True, choices=STATUSCHOICES,unique=True)
+    def __str__(self):
+        return str(self.status)
+
+
 LEVELCHOICES = (
     ('Primary', 'Primary'),
     ('Jss1', 'Jss1'),
@@ -39,11 +44,13 @@ LEVELCHOICES = (
     ('Graduate', 'Graduate'),
     ('Masters Student', 'Masters Student'),
     ('Phd Student', 'Phd Student'),
-
-    
-
-
 )
+
+
+class Level(models.Model):
+    level= models.CharField(max_length= 300, blank=True, choices=LEVELCHOICES,unique=True)
+    def __str__(self):
+        return str(self.level)
 
 ZONECHOICE=(
     ('Awada', 'Awada'),
@@ -51,20 +58,24 @@ ZONECHOICE=(
     ('Holy Trinity', 'HolyTrinity'),
     ('Good Shepherd', 'Good Shepherd'),
     ('None', 'None'),
-
 )
+
+class Zone(models.Model):
+    zone= models.CharField(max_length= 300, blank=True, choices=ZONECHOICE,unique=True)
+    def __str__(self):
+        return str(self.zone)
 
 class data(models.Model):
     name= models.CharField(max_length= 300, blank=True)
     gender= models.CharField(max_length= 300, blank=True, choices=GENDERCHOICES)
     address= models.CharField(max_length= 300, blank=True)
     Church= models.CharField(max_length= 300, blank=True)
-    Zone = models.CharField(max_length= 300, blank=True ,choices=ZONECHOICE)
     Phonenumber= models.CharField(max_length= 300, blank=True)
     Emailaddress= models.CharField(max_length= 300, blank=True)
-    Occupation = models.CharField(max_length= 300, blank=True, choices=STATUSCHOICES)
+    Zone = models.CharField(max_length= 300, blank=True)
+    Occupation= models.CharField(max_length= 300, blank=True)
     School= models.CharField(max_length= 300, blank=True)
-    level= models.CharField(max_length= 300, blank=True , choices=LEVELCHOICES)
+    level= models.CharField(max_length= 300, blank=True)
     date_registered=models.DateTimeField(auto_now_add=True)
     Attended=models.BooleanField(default=False)
     

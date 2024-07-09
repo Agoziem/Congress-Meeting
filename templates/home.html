@@ -1,488 +1,603 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content%}
+{% extends 'base.html' %} {% load static %} {% block content%}
 <!-- Header Section & Count Down-->
-<section class="bg-dark mt-2" style="border-bottom: orange
-2px solid;">
-    <div class="container p-4">
-        <div class="d-md-flex justify-content-between align-items-center">
-            <div class="mb-2 mb-md-0 ps-2" style="color:orange;"> A Forum for students under ACM Awada Archdeaconry
-                <br><span class="text-light" style="font-weight: 500;"> DIOCESE ON THE NIGER </span>
-            </div>
-            <div class=" align-items-center pe-2" style="color:orange;">
-                <a href="/admin" class="text-light text-decoration-none" target="_blank"><i
-                        class="bi bi-lock-fill h4 me-1" style="color: orange;"></i>
-                    Admin </a>
-                <a href="#" class="text-light text-decoration-none"><i class="bi bi-journals h4 me-1 ms-4"
-                        style="color: orange;"></i>
-                    Online Directory </a>
-            </div>
-        </div>
-
+<section class="bg-dark mt-2" style="border-bottom: orange 2px solid">
+  <div class="container p-4">
+    <div class="d-md-flex justify-content-between align-items-center">
+      <div class="mb-2 mb-md-0 ps-2" style="color: orange">
+        A Forum for students under ACM Awada Archdeaconry <br /><span
+          class="text-light"
+          style="font-weight: 500"
+        >
+          DIOCESE ON THE NIGER
+        </span>
+      </div>
+      <div class="align-items-center pe-2" style="color: orange">
+        <!-- only for superuser -->
+        {% if user.is_superuser %}
+        <a href="/admin" class="text-light text-decoration-none" target="_blank"
+          ><i class="bi bi-lock-fill h4 me-1" style="color: orange"></i> Admin
+        </a>
+        {% endif %}
+      </div>
     </div>
-</section>
-<section>
-    <div id="mycarousel" class="carousel slide text-white" data-bs-ride="carousel">
-        <!-- <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-          </div> -->
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{% static 'images/photo_2021-08-19_15-22-08.jpg' %}" class="d-block w-100" alt="...">
-                <div class="carousel-caption ">
-                    <h3 class="animate__animated animate__fadeInRight" style="animation-delay: 1s;color:white;">
-                        Gathering of Believers,Students and Teenagers </h3>
-                    <p id="tag" class="animate__animated animate__fadeInLeft" style="animation-delay: 2s;"> Student
-                        Congress 23' </p>
-                    <P><a href="{% url 'registration:register' %}"
-                            class="animate__animated animate__fadeInBottomLeft text-decoration-none"
-                            style="animation-delay: 3s;">Register now</a></P>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'images/photo_2021-08-19_15-22-36.jpg' %}" class="d-block w-100" alt="...">
-
-                <div class="container">
-                    <div class="carousel-caption  ">
-                        <h3 class="animate__animated animate__fadeInLeft" style="animation-delay: 1s; color:white;">
-                            Engaging &
-                            gaining Mastery</h3>
-                        <p id="tag" class="animate__animated animate__fadeInRight" style="animation-delay: 2s;">
-                            Student Congress 23'</p>
-                        <P><a href="{% url 'registration:register' %}"
-                                class="animate__animated animate__fadeInRight text-decoration-none animate__fadeInDown"
-                                style="animation-delay: 3s;">Register now</a></P>
-
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'images/photo_2021-08-19_15-22-40.jpg' %}" class=" w-100" alt="...">
-
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h3 class=" animate__animated animate__fadeIn" style="animation-delay: 1s; color:white;">
-                            Joy in the HolyGhost
-                        </h3>
-                        <p id="tag" class="animate__animated animate__fadeInRight" style="animation-delay: 2s;">
-                            Student Congress 23'</p>
-                        <P><a href="{% url 'registration:register' %}"
-                                class="animate__animated animate__fadeInBottomRight text-decoration-none animate__fadeInTopRight"
-                                style="animation-delay: 3s;">Register now</a>
-                        </P>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'images/photo_2021-08-19_15-22-44.jpg' %}" class=" w-100" alt="...">
-
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h3 class="animate__animated animate__fadeInRight" style="animation-delay: 1s; color:white;">
-                            breeding and
-                            raising leaders of Tomorrow</h3>
-                        <p id="tag" class="animate__animated animate__fadeInLeft" style="animation-delay: 2s;">
-                            Student Congress 23'</p>
-                        <P><a href="{% url 'registration:register' %}"
-                                class="animate__animated animate__fadeInBottomLeft text-decoration-none"
-                                style="animation-delay: 3s;">Register now</a></P>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{% static 'images/photo_2021-08-19_15-23-00.jpg' %}" class="d-block w-100" alt="...">
-
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h3 class="animate__animated animate__fadeInLeft " style="animation-delay: 1s; color:white;">
-                            Life changing Encounters </h3>
-                        <p id="tag" class="animate__animated animate__fadeInDown" style="animation-delay: 2s;">
-                            Student Congress 23'</p>
-                        <P><a href="{% url 'registration:register' %}"
-                                class="animate__animated animate__fadeInBottomRight text-decoration-none"
-                                style="animation-delay: 3s;">Register now
-                            </a>
-                        </P>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </section>
 
+<!-- Hero Section -->
+<section class="herosection">
+  <div>
+    <h1>Gathering of Believers, Students and Teenagers</h1>
+    <div class="d-flex justify-content-center">
+      <a href="{% url 'registration:register' %}" class="px-5">Click to Register</a>
+    </div>
+  </div>
+</section>
 
 <!-- from the desk of the Cordinator -->
-
 <section id="about" class="p-5 py-2">
-    <div class="container">
-        <div class="text-center my-2" style="font-size: 25px;">Count down to Students Congress 2023</div>
-        <div class="d-flex justify-content-center align-items-center">
-            <div class="Nrule d-none d-md-block"></div>
-
-            <div class="card rounded p-2 ms-2 shadow-sm" id="days"
-                style="background-color:#000;color: orange; font-size: 15px; font-weight: 500;"></div>
-            <div class="card p-2 ms-2 shadow-sm" id="hours"
-                style="background-color:#000;color: orange;font-size: 15px;font-weight: 500;"></div>
-            <div class="card p-2 ms-2 shadow-sm" id="minutes"
-                style="background-color:#000;color: orange; font-size: 15px;font-weight: 500;"></div>
-            <div class="card p-2 ms-2 shadow-sm" id="seconds"
-                style="background-color:#000;color: orange; font-size: 15px;font-weight: 500;"></div>
-
-            <div class="Nrule2 ms-2 d-none d-md-block"></div>
+  <div class="container">
+    <!-- Congress Countdown -->
+    <div class="countdown my-3">
+      <div class="text-center my-2" style="font-size: 25px">
+        Count down to Students Congress 2024
+      </div>
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="Nrule d-none d-md-block"></div>
+        <div
+          id="TmerDisplay"
+          class="d-flex justify-content-center align-items-center"
+        >
+          <div
+            class="card rounded p-2 ms-2 shadow-sm"
+            id="days"
+            style="
+              background-color: #000;
+              color: orange;
+              font-size: 15px;
+              font-weight: 500;
+            "
+          ></div>
+          <div
+            class="card p-2 ms-2 shadow-sm"
+            id="hours"
+            style="
+              background-color: #000;
+              color: orange;
+              font-size: 15px;
+              font-weight: 500;
+            "
+          ></div>
+          <div
+            class="card p-2 ms-2 shadow-sm"
+            id="minutes"
+            style="
+              background-color: #000;
+              color: orange;
+              font-size: 15px;
+              font-weight: 500;
+            "
+          ></div>
+          <div
+            class="card p-2 ms-2 shadow-sm"
+            id="seconds"
+            style="
+              background-color: #000;
+              color: orange;
+              font-size: 15px;
+              font-weight: 500;
+            "
+          ></div>
         </div>
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-4">
-                <div class="p-3 my-4 mb-md-0 bg-light" style="font-size: 14px; border-left: orange 2px solid;">
-                    <p><span class="fw-bold h3">From the Student's Corner:</span><br><br>
 
-                        After last year's Congress where we considered, "the cost of discipleship", Jesus began to
-                        emphasize that his disciples who has accepted to follow should press for more of his realities
-                        and power because he died for more. So I asked him, what do that mean and how do we come into
-                        these more that he is speaking about?
-                        In response he said that there are basic principles in the kingdom upon which the kingdom runs.
-                        He then revealed that the only way a man can enter into more of his realities and power is to
-                        prove Faithful in the little things that has been committed into his/her hand. So he demanded
-                        that we charge his people to be true and faithful in little, then the more will begin to come.
-
-                        <span id="dots">...</span><span id="more">
-                            Therefore, it is from this discussion that the theme for the congress was given as Faithful
-                            in
-                            little from Luke 19:17 and Luke (16:1-12). So we trust Jesus that he will open our eyes to
-                            look
-                            around us in those things in our hands already touching different aspects of life and making
-                            a
-                            conscious decision to be faithful in them.
-                        </span>
-                    </p>
-                    <button class="btn btn-sm" onclick="theFunction()" id="myBtn" style="background-color: orange;">Read
-                        more</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="text-center">
-                    <img src="{% static 'images/Students Coordinator 1.jpg' %}" alt=""
-                        class="img-fluid rounded-circle shadow-sm" width="50%" style="border: orange 4px solid ;">
-                    <h5 class="mt-2 fw-bold">Bro Chukwuka Nnaemeka</h5>
-                    <div style="font-size: 14px;">students Coordinator (ACM Awada Arch)</div>
-                </div>
-            </div>
-        </div>
+        <div class="Nrule2 ms-2 d-none d-md-block"></div>
+      </div>
     </div>
+
+    <!-- Coordinators Profile -->
+    <div class="row justify-content-around align-items-center">
+      <div class="col-md-4">
+        <div
+          class="p-3 my-4 mb-md-0 bg-light"
+          style="font-size: 14px; border-left: orange 2px solid"
+        >
+          <h4 class="fw-bold mb-3">About Student Congress</h4>
+          <div>
+            <div class="event-description-container">
+              <p class="event-description">{{ programme.description }}</p>
+              <button
+                class="btn btn-sm show-more"
+                style="background-color: orange"
+              >
+                Show More
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="text-center">
+          {% if coordinator.photo %}
+          <img
+            src="{{ coordinator.photo.url }}"
+            alt="Coordinator Photo"
+            class="rounded-circle shadow-sm"
+            width="300px"
+            height="300px"
+            style="
+              border: orange 4px solid;
+              object-fit: cover;
+              object-position: center;
+            "
+          />
+          {% endif %}
+
+          <h4 class="mt-4 mb-0 fw-bold">{{ coordinator.name }}</h4>
+          <div style="font-size: 14px">
+            students Coordinator (ACM Awada Arch)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-<hr>
-<!-- Registration form and Streaming Platforms  -->
+
+<hr />
+<!-- Programme Details and Flier  -->
 <section id="Register" class="p-5">
-    <div class="container px-0">
-        <div class="row justify-content-center align-items-start">
-            <div class="col-md-4 pe-0 pe-md-5">
-                <a href="{% static 'images/Student Congress.jpeg' %}"><img
-                        src="{% static 'images/Student Congress.jpeg' %}" alt="" class="img-fluid img-thumbnail"></a>
-                <p class="text-secondary mt-3">click the flier , to expand <i class="bi bi-arrows-expand"></i></p>
+  <h2 class="text-center mb-3">Programme Details</h2>
+  <div class="multiplerule mb-3 d-flex justify-content-center">
+    <div class="Nrule"></div>
+    <div class="Nrule2"></div>
+  </div>
+  <div>
+    <p class="text-secondary text-center mx-auto mb-4" style="max-width: 700px">
+      The Congress is a gathering of students and teenagers under the ACM
+      Awada Archdeaconry , it is a time of refreshing and empowerment for the
+      students and teenagers in the Archdeaconry
+    </p>
+  </div>
+  <div class="container px-0">
+    <div class="row justify-content-around align-items-center">
+      <!-- Programme Flier -->
+      <div class="col-md-4 pe-0 pe-md-5">
+        {% if programme.flier %}
+        <a href="{{ programme.flier.url }}"
+          ><img
+            src="{{ programme.flier.url }}"
+            alt=""
+            class="img-fluid img-thumbnail"
+        /></a>
+        {% endif %}
+        <p class="text-secondary mt-3">
+          click the flier , to expand <i class="bi bi-arrows-expand"></i>
+        </p>
 
-                <div class="d-flex justify-content-center ">
-                    <a href="{% url 'registration:register' %}"
-                        class="text-decoration-none btn btn-outline-primary ">Register Now , to secure a Spot</a>
-                </div>
-            </div>
-
-            <div class="col-md-4 ps-0 ps-md-5">
-                <div class="text-center mt-4 mt-md-0">
-                    <!-- <video controls loop>
-                        <source src="{% static 'videos/Acm congress.mp4'%}" type="video/mp4">
-                    </video> -->
-                    <div class="text-center">
-                        <div class="mb-2" style="font-size: 23px; font-weight: 400;"> You can stream with us on Telegram
-                        </div>
-                        {% if link %}
-                        {% for Mixlr in link %}
-                        <p class="small p-3 bg-light"><a href="{{ Mixlr.Mixlr }}"
-                                class="text-decoration-none me-3 text-dark">{{ Mixlr.Mixlr }}</a><i
-                                class="bi bi-info rounded-circle p-1 ms-1"
-                                style="background-color: orange; color:#000;"></i></p>
-                        {% endfor %}
-                        {% else %}
-                        <p class="small p-3 bg-light">link will be available Soon , keep checking back <i
-                                class="bi bi-info rounded-circle p-1 ms-1"
-                                style="background-color: orange; color:#000;"></i></p>
-                        {% endif %}
-                        <img src="{% static 'images/Mixlr-removebg-preview.png' %}" alt="" class="img-fluid"
-                            style="max-width:100px;">
-                        <img src="{% static 'images/Telegram Icon.png' %}" alt="" class="img-fluid ms-3"
-                            style="max-width:40px;">
-                        <div class="d-flex align-items-center justify-content-center mt-4">
-                            <div id="day" style="font-size:60px;color:#000; font-weight: 600;"></div>
-                            <div class="ms-1 px-3 py-1 shadow-sm"
-                                style="background-color: #000;color: orange; border-radius: 10px;"><i> Days to go </i>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="p-4 mt-2 bg-light shadow-sm">
-                    <div class="mb-2">
-                        <span class="fw-bold"><i class="bi bi-calendar-event-fill me-2 h4" style="color: orange ;"></i>
-                            PROGRAMME SCHEDULE </span><br>
-                        <li class="my-2 ps-3">4th Friday - 6th Sunday </li>
-
-                    </div>
-                    <div class="mb-2">
-                        <span class="fw-bold"><i class="bi bi-clock-fill me-2 h4" style="color: orange ;"></i>
-                            TIME </span><br>
-                        <li class="my-2 ps-3">5:00pm dot - Friday </li>
-                        <li class="my-2 ps-3">10:00am dot - Saturday </li>
-                        <li class="my-2 ps-3">1:00pm dot - Sunday </li>
-                    </div>
-                    <div>
-                        <span class="fw-bold"><i class="bi bi-geo-alt-fill me-2 h3" style="color: orange ;"></i>
-                            Good Shepherd Anglican Church Awada</span>
-                    </div>
-                </div>
-
-            </div>
+        <div class="d-flex justify-content-center">
+          <a
+            href="{% url 'registration:register' %}"
+            class="text-decoration-none btn btn-outline-primary"
+            >Register Now , to secure a Spot</a
+          >
         </div>
-    </div>
-</section>
-<!-- <hr> -->
-<!-- Speakers Profile -->
-<!-- <section class="p-2" id="profile">
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-3">
-                <div class="container p-5 p-md-0">
-                    <div style="font-size: 25px;font-weight:500;">Programme features</div>
-                    <div class="multiplerule my-3 d-flex ">
-                        <div class="Nrule"></div>
-                        <div class="Nrule2"></div>
-                    </div>
+      </div>
 
-                    <div class="ps-3 mt-2" style="font-size: 18px;">
-                        <div>
-                            <i class="bi bi-check-circle-fill me-2" style="color: orange;"></i> Powerful Word of God
-                        </div>
-                        <div>
-                            <i class="bi bi-check-circle-fill me-2" style="color: orange;"></i> Seasoned Seminars
-                        </div>
-                        <div>
-                            <i class="bi bi-check-circle-fill me-2" style="color: orange;"></i> Hot Praise and Worship
-                            Section
-                        </div>
-                        <div>
-                            <i class="bi bi-check-circle-fill me-2" style="color: orange;"></i> Best Student Award
-                        </div>
-                        <div>
-                            <i class="bi bi-check-circle-fill me-2" style="color: orange;"></i> Prayer Sessions
-                        </div>
-                        <div>
-                            <i class="bi bi-check-circle-fill me-2" style="color: orange;"></i> Refreshment and lot
-                            more
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="text-center">
-                    <img src="{% static 'images/Speaker.jpg' %}" alt="" class="img-fluid rounded-circle shadow-sm"
-                        width="50%" style="border: orange 4px solid ;">
-                    <h4 class="mt-2 fw-bold">Evang Uche Anyanwu</h4>
-                    <div style="font-size: 16px;">2022 Congress Speaker</div>
-                </div>
-            </div>
-            <div class="col-md-4 px-5 px-md-0">
-                <div class="p-3 my-4 mb-md-0 bg-dark text-light rounded shadow-sm"
-                    style="font-size: 14px; border-left: orange 4px solid;">
-                    <p class="mt-3"><span class="fw-bold h3" style="color: orange;">Speakers' profile </span><br><br>
-
-                        Apostle Uche Anyanwu is a fiery preacher and teacher of God's word who speaks in crusades and
-                        conferences and Seminars.
-                        For over 2 Decades He has championed communal and personal revival of the move of the SPIRIT as
-                        of old especially among young people and churches.
-                        He is committed to establishing the kingdom of God in both reached and unreached Nations through
-                        the Gospel of the kingdom. Also committed to raising uncompromising leaders and creating the
-                        consciousness of the person of the Holy Spirit in the life of believers through sound biblical
-                        teaching.
-                        He is the president of Elders summit international, a Gospel mission organization that equips
-                        and sends Christian missionaries across the globe.
-                        He is father to many sons and daughters in ministry.
-                        He is also the lead Minister of Mahanaim Int'l Gospel Center, Ekwulobia, Anambra state, Nigeria.
-                        He is married to Pst Chiamaka Anyanwu, and they are blessed with 3 children
-
-                    </p>
-                </div>
-            </div>
+      <!-- Programme Details -->
+      <div class="col-md-4 ps-0 ps-md-5">
+        <div class="p-4 mt-2 bg-light shadow-sm mt-3">
+          <div class="mb-2">
+            <span class="fw-bold"
+              ><i
+                class="bi bi-calendar-event-fill me-2 h4"
+                style="color: orange"
+              ></i>
+              CONGRESS DATE </span
+            ><br />
+            <li class="my-2 ps-3">{{ programme.date }}</li>
+          </div>
+          <div class="mb-2">
+            <span class="fw-bold"
+              ><i class="bi bi-clock-fill me-2 h4" style="color: orange"></i>
+              PROGRAMME SCHEDULE </span
+            ><br />
+            {% for schedule in programmeevents %}
+            <li class="my-2 ps-3">
+              {{ schedule.time }} dot - {{ schedule.day}}
+              <span class="ms-2 fw-bold" style="color: orange">
+                {{ schedule.description }}
+              </span>
+            </li>
+            {% endfor %}
+          </div>
+          <div>
+            <span class="fw-bold"
+              ><i class="bi bi-geo-alt-fill me-2 h3" style="color: orange"></i>
+              {{ programme.venue }}</span
+            >
+          </div>
         </div>
-    </div>
-</section> -->
-
-
-<hr>
-<!--previous photo Galleries -->
-<section id="gallery" class="py-2 mb-3">
-    <div class=" container py-2 mb-0 text-center">
-        <div class="mb-3 h2" style="font-size: 30px;">PHOTO GALLERY</div>
-        <div class="multiplerule mb-3 d-flex justify-content-center">
+        <div class="container p-5 p-md-0 mt-4">
+          <div class="mb-2" style="font-size: 25px; font-weight: 500">
+            Programme features
+          </div>
+          <div class="multiplerule mb-3 d-flex">
             <div class="Nrule"></div>
             <div class="Nrule2"></div>
+          </div>
+
+          <div class="ps-3 mt-4" style="font-size: 18px">
+            <div class="mb-1">
+              <i class="bi bi-check-circle-fill me-2" style="color: orange"></i>
+              Powerful Word of God
+            </div>
+            <div class="mb-1">
+              <i class="bi bi-check-circle-fill me-2" style="color: orange"></i>
+              Seasoned Seminars
+            </div>
+            <div class="mb-1">
+              <i class="bi bi-check-circle-fill me-2" style="color: orange"></i>
+              Hot Praise and Worship Section
+            </div>
+            <div class="mb-1">
+              <i class="bi bi-check-circle-fill me-2" style="color: orange"></i>
+              Best Student Award
+            </div>
+            <div class="mb-1">
+              <i class="bi bi-check-circle-fill me-2" style="color: orange"></i>
+              Prayer Sessions
+            </div>
+            <div class="mb-1">
+              <i class="bi bi-check-circle-fill me-2" style="color: orange"></i>
+              Refreshment and lot more
+            </div>
+          </div>
         </div>
-        <p class="text-secondary"> few pictures from our last year Student's Congress and Anniversary <span
-                class="fw-bold"> " CONVICTION " </span> </p>
-        <div class="container row g-3 p-0">
-            <div class="col-md-6 col-lg-4">
-                <div class="container mb-2">
-                    <img src="{% static 'images/photo_2021-08-19_15-23-00.jpg' %}"
-                        class="img-fluid shadow-sm rounded mx-auto" />
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="container mb-2">
-                    <img src="{% static 'images/photo_2021-08-19_15-22-44.jpg' %}"
-                        class="img-fluid shadow-sm rounded mx-auto" />
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="container mb-2">
-                    <img src="{% static 'images/photo_2021-08-19_15-22-56.jpg' %}"
-                        class="img-fluid shadow-sm rounded mx-auto" />
-                </div>
-            </div>
-            <br />
-        </div>
-        <a href="{% url 'Photogallery:photos' %}" class=" btn mt-3" style="background-color: orange; color:#000;">
-            View more photos
-        </a>
+      </div>
     </div>
+  </div>
 </section>
 
+<!-- Streaming and Platorms -->
+<hr />
+<section class="my-5">
+  <div class="text-center mt-4 mt-md-0">
+    <!-- <video controls loop>
+                  <source src="{% static 'videos/Acm congress.mp4'%}" type="video/mp4">
+              </video> -->
+    <div class="text-center">
+      <div class="mb-2" style="font-size: 23px; font-weight: 400">
+        You can stream with us on Telegram
+      </div>
+      {% if link %} {% for Mixlr in link %}
+      <p class="small p-3 bg-light">
+        <a href="{{ Mixlr.Mixlr }}" class="text-decoration-none me-3 text-dark"
+          >{{ Mixlr.Mixlr }}</a
+        ><i
+          class="bi bi-info rounded-circle p-1 ms-1"
+          style="background-color: orange; color: #000"
+        ></i>
+      </p>
+      {% endfor %} {% else %}
+      <p class="small p-3 bg-light">
+        link will be available Soon , keep checking back
+        <i
+          class="bi bi-info rounded-circle p-1 ms-1"
+          style="background-color: orange; color: #000"
+        ></i>
+      </p>
+      {% endif %}
+      <img
+        src="{% static 'images/Mixlr-removebg-preview.png' %}"
+        alt=""
+        class="img-fluid"
+        style="max-width: 100px"
+      />
+      <img
+        src="{% static 'images/Telegram Icon.png' %}"
+        alt=""
+        class="img-fluid ms-3"
+        style="max-width: 40px"
+      />
+    </div>
+  </div>
+</section>
+<hr />
+
+<!-- Congress Speakers  -->
+<section class="p-2 my-5" id="profile">
+  <div class="container">
+    <h2 class="text-center mb-3">Speakers Profile</h2>
+    <div class="multiplerule mb-3 d-flex justify-content-center">
+      <div class="Nrule"></div>
+      <div class="Nrule2"></div>
+    </div>
+    <div>
+      <p
+        class="text-secondary text-center mx-auto mb-4"
+        style="max-width: 700px"
+      >
+        Meet the Speakers for this year's Congress
+      </p>
+    </div>
+
+    {% for speaker in speakers %}
+    <div class="row justify-content-around align-items-center">
+      <!-- Speakers Image -->
+      <div class="col-md-4">
+        <div class="text-center">
+          {% if speaker.photo %}
+          <img
+            src="{{ speaker.photo.url }}"
+            alt=""
+            class="rounded-circle shadow-sm"
+            width="300px"
+            height="300px"
+            style="
+              border: orange 4px solid;
+              object-fit: cover;
+              object-position: top center;
+            "
+          />
+          {% endif %}
+          <h4 class="mt-4 mb-1 fw-bold">{{ speaker.name }}</h4>
+          <div style="font-size: 16px">
+            {{ programme.year }} Congress Speaker
+          </div>
+        </div>
+      </div>
+
+      <!-- Speakers Profile -->
+      <div class="col-md-4 px-5 px-md-0">
+        <div
+          class="p-3 my-4 mb-md-0 bg-dark text-light rounded shadow-sm"
+          style="font-size: 14px; border-left: orange 4px solid"
+        >
+          <p class="mt-3">
+            <span class="fw-bold h3" style="color: orange">Speakers' Bio </span
+            ><br /><br />
+            {{ speaker.bio }}
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<hr />
+<!--previous photo Galleries -->
+<section id="gallery" class="py-2 mb-3">
+  <div class="container py-2 mb-0 text-center">
+    <h2 class="text-center mb-3">Photo Gallery</h2>
+    <div class="multiplerule mb-3 d-flex justify-content-center">
+      <div class="Nrule"></div>
+      <div class="Nrule2"></div>
+    </div>
+    <div>
+      <p class="text-secondary mx-auto mb-4" style="max-width: 700px">
+        few pictures from Student's Congress over the years
+      </p>
+    </div>
+
+    <div class="row justify-content-center g-3 p-0 mx-auto px-2 px-md-0">
+      {% if images %} {% for photo in images %}
+      <div class="col-12 col-md-6 col-lg-4 text-center">
+        <div class="mb-2 mx-auto">
+          <img
+            src="{{ photo.Photo.url }}"
+            class="img-fluid shadow-sm rounded mx-auto"
+          />
+        </div>
+      </div>
+      {% endfor %} {% else %}
+      <div class="container text-center">
+        <p class="text-secondary">No photos available yet</p>
+      </div>
+      {% endif %}
+      <br />
+    </div>
+
+    <a
+      href="{% url 'Photogallery:photos' %}"
+      class="btn mt-3"
+      style="background-color: orange; color: #000"
+    >
+      View more photos
+    </a>
+  </div>
+</section>
 
 <!-- FAQ and Subscription -->
 <section class="p-5" id="Rcover">
-    <div class="container px-0 px-md-2" id="Rcoverwrapper">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-4 mb-3 text-center text-light">
-                <div class=" px-2 mb-3">
+  <div class="container px-0 px-md-2" id="Rcoverwrapper">
+    <div class="row justify-content-around align-items-center">
+      <div class="col-md-4 mb-3 text-center text-light">
+        <div class="px-2 mb-3">
+          <!-- Submitted Successful Alert -->
+          <div
+            id="sub_form_alert_success"
+            class="alert alert-success"
+            style="display: none"
+          >
+            <i class="bi bi-check-circle-fill mx-2 text-success h5"></i>
+            <div>Your email has been sent successfully!</div>
+          </div>
 
-                    <!-- Submitted Successful Alert -->
-                    <div id="sub_form_alert_success" class="alert alert-success" style="display: none;">
-                        <i class="bi bi-check-circle-fill mx-2 text-success h5"></i>
-                        <div>
-                            Your email has been sent successfully!
-                        </div>
-                    </div>
-
-                    <!-- Subscription form -->
-                    <form method="POST" id="sub_form">
-                        {% csrf_token %}
-                        <h5 style="color: orange;">Subscribe to our newsletter</h5>
-                        <p> to continue to get Notifications of our Congress and other Programme Updates</p>
-                        <div class="input-group news-input">
-                            <input type="email" class="form-control" placeholder="Enter Email" name="email" />
-                            <button class="btn btn-md" type="submit" value="submit"
-                                style="background-color: orange; color: black;">Submit</button>
-                        </div>
-                    </form>
-
-                    <div class="my-3">
-                        <p style="color: orange;">follow us on our Social Media Platform</p>
-                        <div>
-                            <a href="https://t.me/joinchat/EXoGLBvonA9pdJ6lHz6LgA" style="color: orange;"><i
-                                    class="bi bi-telegram h1"></i></a>
-                            <a href="https://www.facebook.com/101970899265002/posts/pfbid0imvBJuZRg6BZRKq3Tf1hqCMHzcd2FXmYBEyKf9oAxy2xh8vQ2C4K3Jq2HNvZSZMnl/?app=fbl"
-                                style="color: orange;"><i class="bi bi-facebook h1 ms-3"></i></a>
-                        </div>
-                    </div>
-                </div>
-
+          <!-- Subscription form -->
+          <form method="POST" id="sub_form">
+            {% csrf_token %}
+            <h5 style="color: orange">Subscribe to our newsletter</h5>
+            <p>
+              to continue to get Notifications of our Congress and other
+              Programme Updates
+            </p>
+            <div class="input-group news-input">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Enter Email"
+                name="email"
+              />
+              <button
+                class="btn btn-md"
+                type="submit"
+                value="submit"
+                style="background-color: orange; color: black"
+              >
+                Submit
+              </button>
             </div>
-            <div class="col-md-4">
-                <div class="text-light mt-2 text-center" style="font-size:40px;">FAQ</div>
-                <div class="multiplerule mb-3 d-flex justify-content-center">
-                    <div class="Nrule"></div>
-                    <div class="Nrule3"></div>
-                </div>
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseOne" aria-expanded="false"
-                                aria-controls="flush-collapseOne">
-                                When is students Congress Starting ?
-                            </button>
-                        </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body"> Its Starting on Friday 4th of August 2022 </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                aria-controls="flush-collapseTwo">
-                                Where is the Venue for the Congress
-                            </button>
-                        </h2>
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body"> Its holding at Good Shepherd Anglican Church Awada , along NEPA
-                                Road , <a href="#Register"> you can also Stream with us online </a>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseThree" aria-expanded="false"
-                                    aria-controls="flush-collapseThree">
-                                    Who is the Speaker of this year's Congress
-                                </button>
-                            </h2>
-                            <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Bro. Henry Nwamadi
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingFour">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseFour" aria-expanded="false"
-                                    aria-controls="flush-collapseThree">
-                                    Is it a Camping programme
-                                </button>
-                            </h2>
-                            <div id="flush-collapseFour" class="accordion-collapse collapse"
-                                aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body"> No , it holds from Friday 5th to Sunday 7th
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingFive">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseFive" aria-expanded="false"
-                                    aria-controls="flush-collapseFive">
-                                    What are the Seminars we are going to be having during the Congress and who are the
-                                    Facilitators
-                                </button>
-                            </h2>
-                            <div id="flush-collapseFive" class="accordion-collapse collapse"
-                                aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    <li> Seminar Topic: <span class="fw-bold"> Stewardship</span>
-                                    </li>
-                                    <li> Junior class: <span class="fw-bold">Ezz Mrs Esther Aniamalu</span>
-                                    </li>
-                                    <li> Senior class:<span class="fw-bold">Pst. Chijioke Nnaemeka </span></li>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </form>
+
+          <div class="my-3">
+            <p style="color: orange">follow us on our Social Media Platform</p>
+            <div>
+              <a
+                href="https://t.me/joinchat/EXoGLBvonA9pdJ6lHz6LgA"
+                style="color: orange"
+                ><i class="bi bi-telegram h1"></i
+              ></a>
+              <a
+                href="https://www.facebook.com/101970899265002/posts/pfbid0imvBJuZRg6BZRKq3Tf1hqCMHzcd2FXmYBEyKf9oAxy2xh8vQ2C4K3Jq2HNvZSZMnl/?app=fbl"
+                style="color: orange"
+                ><i class="bi bi-facebook h1 ms-3"></i
+              ></a>
             </div>
+          </div>
         </div>
+      </div>
+      <div class="col-md-4">
+        <div class="text-light mt-2 text-center" style="font-size: 40px">
+          FAQ
+        </div>
+        <div class="multiplerule mb-3 d-flex justify-content-center">
+          <div class="Nrule"></div>
+          <div class="Nrule3"></div>
+        </div>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h5 class="accordion-header" id="flush-headingOne">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne"
+                aria-expanded="false"
+                aria-controls="flush-collapseOne"
+              >
+                When is students Congress Starting ?
+              </button>
+            </h5>
+            <div
+              id="flush-collapseOne"
+              class="accordion-collapse collapse"
+              aria-labelledby="flush-headingOne"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                The Congress Date is {{ programme.date }}
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h5 class="accordion-header" id="flush-headingTwo">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseTwo"
+                aria-expanded="false"
+                aria-controls="flush-collapseTwo"
+              >
+                Where is the Venue for the Congress
+              </button>
+            </h5>
+            <div
+              id="flush-collapseTwo"
+              class="accordion-collapse collapse"
+              aria-labelledby="flush-headingTwo"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                Its holding at {{ programme.venue }} , along NEPA Road ,
+                <a href="#Register"> you can also Stream with us online </a>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h5 class="accordion-header" id="flush-headingThree">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseThree"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseThree"
+                >
+                  Who is the Speaker of this year's Congress
+                </button>
+              </h5>
+              <div
+                id="flush-collapseThree"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingThree"
+                data-bs-parent="#accordionFlushExample"
+              >
+                <div class="accordion-body">
+                  {% for speaker in speakers %} {{ speaker.name }} {% endfor %}
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h5 class="accordion-header" id="flush-headingFour">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseFour"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseThree"
+                >
+                  Is it a Camping programme
+                </button>
+              </h5>
+              <div
+                id="flush-collapseFour"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingFour"
+                data-bs-parent="#accordionFlushExample"
+              >
+                <div class="accordion-body">No , its a day programme</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h5 class="accordion-header" id="flush-headingFive">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseFive"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseFive"
+                >
+                  What are the Seminar Categories
+                </button>
+              </h5>
+              <div
+                id="flush-collapseFive"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingFive"
+                data-bs-parent="#accordionFlushExample"
+              >
+                <div class="accordion-body">
+                  we have different categories of seminars in the Congress they
+                  are Senior and Junior Categories
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}

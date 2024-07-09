@@ -1,109 +1,212 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/ACM Logo.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/ACM Logo.png' %}">
-    <link rel="icon" type="image/png" sizes="48x48" href="{% static 'images/ACM Logo.png' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=League+Spartan:wght@100;200;300;400;500;600&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'images/ACM Logo.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'images/ACM Logo.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="{% static 'images/ACM Logo.png' %}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=League+Spartan:wght@100;200;300;400;500;600&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
     <title>Students Congress</title>
+    <!-- add description -->
+    <meta
+      name="description"
+      content="Students Congress is a programme designed for Christian students to come and be edified , and learn how to occupy for God in their various campuses and Secondary Schools."
+    />
+    <!-- add an image that will show when its shared -->
+    {% if programme %} {% if programme.flier %}
+    <meta property="og:image" content="{{ programme.flier.url }}" />
+    {% else %}
+    <meta
+      property="og:image"
+      content="{% static 'images/Student Congress.jpeg' %}"
+    />
+    {% endif %} {% else %}
+    <meta
+      property="og:image"
+      content="{% static 'images/Student Congress.jpeg' %}"
+    />
+    {% endif %}
+    
     <script>
-        var user = '{{request.user}}'
+      var user = "{{request.user}}";
 
-        function getToken(name) {
-            var cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                var cookies = document.cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = cookies[i].trim();
-                    // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
+      function getToken(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+          var cookies = document.cookie.split(";");
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+              cookieValue = decodeURIComponent(
+                cookie.substring(name.length + 1)
+              );
+              break;
             }
-            return cookieValue;
+          }
         }
-        var csrftoken = getToken('csrftoken')
+        return cookieValue;
+      }
+      var csrftoken = getToken("csrftoken");
     </script>
-</head>
+  </head>
 
-<body class="position-relative d-flex flex-column min-vh-100">
+  <body class="position-relative d-flex flex-column min-vh-100">
+    <nav
+      class="navbar navbar-expand-lg navbar-dark mt-0 fixed-top"
+      style="background-color: #000"
+    >
+      <div class="container px-2">
+        <a
+          href="#"
+          class="ms-3 navbar-brand text-light pb-0 d-flex align-items-center"
+        >
+          <img
+            src="{% static 'images/ACM Logo.png' %}"
+            alt="..."
+            width="43"
+            height="48"
+          />
 
-    <nav class="navbar navbar-expand-lg navbar-dark mt-0 fixed-top" style="background-color:#000;">
-        <div class=" container px-2">
-            <a href="#" class="ms-3 navbar-brand text-light pb-0 d-flex align-items-center"> <img
-                    src="{% static 'images/ACM Logo.png' %}" alt="..." width="43" height="48">
+          <div class="ms-3 h5 text-light pt-3">
+            ACM AWADA ARCH <br />
+            <span class="small" style="color: orange">Student's Forum </span>
+          </div>
+        </a>
 
-                <div class=" ms-3 h5 text-light pt-3"> ACM AWADA ARCH <br> <span class="small"
-                        style="color: orange;">Student's Forum </span>
-                </div>
-            </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon text-light"> </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ol class="navbar-nav ms-auto text-start ps-1">
+            <li class="nav-item me-2">
+              <a
+                href="{% url 'home' %}"
+                class="nav-link active"
+                style="color: orange !important"
+                >Home</a
+              >
+            </li>
 
-            <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-                <span class="navbar-toggler-icon text-light ">
-                </span>
-            </button>
-            <div class="collapse navbar-collapse" id="navmenu">
-                <ol class="navbar-nav ms-auto  text-start ps-1">
-                    <li class="nav-item me-2">
-                        <a href="{% url 'home' %}" class="nav-link active" style="color:orange!important;">Home</a>
-                    </li>
+            <li class="nav-item me-2">
+              <a href="{% url 'home' %}#about" class="nav-link text-light"
+                >about Us</a
+              >
+            </li>
+            <li class="nav-item me-2">
+              <a href="{% url 'home' %}#profile" class="nav-link text-light"
+                >Speaker's Profile</a
+              >
+            </li>
 
-                    <li class="nav-item me-2">
-                        <a href="{% url 'home' %}#about" class="nav-link text-light">about Us</a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a href="{% url 'home' %}#profile" class="nav-link text-light">Speaker's Profile</a>
-                    </li>
-
-                    <li class="nav-item me-2">
-                        <a href="{% url 'home' %}#Register" class="nav-link text-light">Register</a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a href="{% url 'Photogallery:photos' %}" class="nav-link text-light">Photo gallery</a>
-                    </li>
-                    <li class="nav-item me-2">
-                        <a href="/admin" target="_blank" class="nav-link text-light">Admin</a>
-                    </li>
-                </ol>
-            </div>
+            <li class="nav-item me-2">
+              <a
+                href="{% url 'registration:register' %}"
+                class="nav-link text-light"
+                >Register</a
+              >
+            </li>
+            <li class="nav-item me-2">
+              <a
+                href="{% url 'Photogallery:photos' %}"
+                class="nav-link text-light"
+                >Photo gallery</a
+              >
+            </li>
+            <li class="nav-item me-2">
+              <a href="/admin" target="_blank" class="nav-link text-light"
+                >Admin</a
+              >
+            </li>
+          </ol>
         </div>
+      </div>
     </nav>
-    {% block content%}
-    {% endblock %}
+    {% block content%} {% endblock %}
 
-    <footer class="py-3 mt-auto" style="background-color:#000;border-top: orange
-    2px solid;">
-        <ul class="nav justify-content-center pb-3 mb-3" style="border-bottom: rgba(139, 139, 139,0.4) 1px solid ;">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">About</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-light ">Speaker's Profile</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Register</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-light">FAQs</a></li>
-        </ul>
-        <p class="small text-center" style="color: orange;">&copy; 2022 Students Congress , designed by Gozzy tech</p>
+    <footer
+      class="py-3 mt-auto"
+      style="background-color: #000; border-top: orange 2px solid"
+    >
+      <ul
+        class="nav justify-content-center pb-3 mb-3"
+        style="border-bottom: rgba(139, 139, 139, 0.4) 1px solid"
+      >
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-light">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-light">About</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-light">Speaker's Profile</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-light">Register</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-2 text-light">FAQs</a>
+        </li>
+      </ul>
+      <p class="small text-center" style="color: orange">
+        &copy; 2022 Students Congress , designed by Gozzy tech
+      </p>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
- 
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

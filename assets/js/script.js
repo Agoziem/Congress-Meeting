@@ -1,24 +1,45 @@
-function theFunction() {
-  var dots = document.getElementById("dots");
-  var moreText = document.getElementById("more");
-  var btnText = document.getElementById("myBtn");
+function truncateText(selector, maxLength) {
+  const elements = document.querySelectorAll(selector);
 
-  if (dots.style.display === "none") {
-    dots.style.display = "inline";
-    btnText.innerHTML = "Read more";
-    moreText.style.display = "none";
-  } else {
-    dots.style.display = "none";
-    btnText.innerHTML = "Read less";
-    moreText.style.display = "inline";
-  }
+  elements.forEach((element) => {
+    let fullText = element.textContent;
+    if (fullText.length > maxLength) {
+      let truncatedText = fullText.substring(0, maxLength) + "...";
+      element.setAttribute("data-full-text", fullText);
+      element.textContent = truncatedText;
+    }
+  });
 }
 
-var countDownDate = new Date("Aug 4, 2023 15:00:00").getTime();
+function setupShowMoreButtons(maxlength) {
+  const buttons = document.querySelectorAll(".show-more");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const container = event.target.closest(".event-description-container");
+      const description = container.querySelector(".event-description");
+
+      if (description.textContent.endsWith("...")) {
+        description.textContent = description.getAttribute("data-full-text");
+        event.target.textContent = "Show Less";
+      } else {
+        const fullText = description.getAttribute("data-full-text");
+        const maxLength = maxlength || 500;
+        description.textContent = fullText.substring(0, maxLength) + "...";
+        event.target.textContent = "Show More";
+      }
+    });
+  });
+}
+
+// Initialize truncation and button functionality
+truncateText(".event-description", 900); // Adjust 50 to your desired length
+setupShowMoreButtons(900);
+
+var countDownDate = new Date("Aug 2, 2024 15:00:00").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function () {
-
   // Get today's date and time
   var now = new Date().getTime();
 
@@ -34,22 +55,24 @@ var x = setInterval(function () {
   // Display the result in the element with id="demo"
   document.getElementById("days").innerHTML = days + "d ";
   document.getElementById("hours").innerHTML = hours + "h ";
-  document.getElementById("minutes").innerHTML = minutes + "m " ;
+  document.getElementById("minutes").innerHTML = minutes + "m ";
   document.getElementById("seconds").innerHTML = seconds + "s ";
-  document.getElementById("day").innerHTML = days ;
-
-  
 
   // If the count down is finished, write some text
-  if (distance < 0) {
+
+  if (distance <= 0) {
     clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
+    if (seconds === 0) {
+      document.getElementById(
+        "TmerDisplay"
+      ).innerHTML = `<span class="text-success fw-bold mx-2" > The Congress is Live Now </span>`;
+    } else {
+      document.getElementById(
+        "TmerDisplay"
+      ).innerHTML = `<span class="text-success fw-bold mx-2" > The Congress is Live Now </span>`;
+    }
   }
 }, 1000);
-
-
-
-
 
 // var myModal = document.getElementById('myModal')
 // var myInput = document.getElementById('myInput')
@@ -58,37 +81,37 @@ var x = setInterval(function () {
 //   myInput.focus()
 // })
 
-var subform = document.getElementById('sub_form');
+var subform = document.getElementById("sub_form");
 
-subform.addEventListener('submit', function (e) {
-  e.preventDefault()
-  submitsubformdata()
-})
+subform.addEventListener("submit", function (e) {
+  e.preventDefault();
+  submitsubformdata();
+});
 
 function submitsubformdata() {
   var userdata = {
-    'email': subform.email.value,
-  }
+    email: subform.email.value,
+  };
 
-  var url = '/subscription/'
+  var url = "/subscription/";
   fetch(url, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'content-Type': 'application/json',
-      'X-CSRFToken': csrftoken
+      "content-Type": "application/json",
+      "X-CSRFToken": csrftoken,
     },
-    body: JSON.stringify({ 'userdata': userdata })
+    body: JSON.stringify({ userdata: userdata }),
   })
     .then((response) => {
       return response.json();
     })
     .then((data) => {
-      var successAlert = document.querySelector('#sub_form_alert_success');
-      successAlert.style.display = 'flex';
+      var successAlert = document.querySelector("#sub_form_alert_success");
+      successAlert.style.display = "flex";
       subform.reset();
-      setTimeout(function() {
-        successAlert.style.display = 'none';
+      setTimeout(function () {
+        successAlert.style.display = "none";
       }, 3000);
-      console.log('Data :', data)
-    })
+      console.log("Data :", data);
+    });
 }
