@@ -12,7 +12,7 @@ class Programme(models.Model):
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.name + " " + self.theme
 
     class Meta:
         ordering = ['updated_at']

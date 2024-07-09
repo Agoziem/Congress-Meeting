@@ -63,7 +63,8 @@ function submitsubformdata() {
     School: Regform.School.value,
     level: Regform.level.value,
   };
-  var url = "/registration/Submitregistrationform/";
+  const programme_id = document.getElementById("programme_id").value;
+  var url = `/registration/Submitregistrationform/${programme_id}`;
   fetch(url, {
     method: "POST",
     headers: {

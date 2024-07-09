@@ -1,5 +1,5 @@
 from django.db import models
-
+from Event.models import Programme
 
 GENDERCHOICES = (
     ('Male', 'Male'),
@@ -78,6 +78,7 @@ class data(models.Model):
     level= models.CharField(max_length= 300, blank=True)
     date_registered=models.DateTimeField(auto_now_add=True)
     Attended=models.BooleanField(default=False)
+    programme=models.ForeignKey(Programme, on_delete=models.CASCADE, blank=True, null=True) 
     
     def __str__(self):
         return str(self.name)

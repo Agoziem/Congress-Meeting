@@ -25,7 +25,8 @@ def register(request):
 from django.http import JsonResponse
 import json
 
-def Submitregistrationform(request):
+def Submitregistrationform(request,programme_id):
+    programme = Programme.objects.get(id=programme_id)
     subdata = json.loads(request.body)
     name = subdata['name']
     gender = subdata['gender']
@@ -38,7 +39,7 @@ def Submitregistrationform(request):
     School = subdata['School']
     level = subdata['level']
 
-    registereddata, created = data.objects.get_or_create(name=name)
+    registereddata, created = data.objects.get_or_create(name=name,programme=programme)
     registereddata.gender = gender
     registereddata.address = address
     registereddata.Phonenumber = Phonenumber

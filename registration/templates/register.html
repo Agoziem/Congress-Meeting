@@ -56,6 +56,14 @@
         <!-- Registration Form -->
         <form method="POST" id="Reg_Form" style="display: none">
           {% csrf_token %}
+          
+            <input
+              type="text"
+              id="programme_id"
+              hidden
+              value="{{ programme.id }}"
+            />
+
           <div class="mb-3">
             <label class="form-label" for="name">Name</label>
             <input
