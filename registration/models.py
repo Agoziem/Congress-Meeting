@@ -76,7 +76,7 @@ class data(models.Model):
     Occupation= models.CharField(max_length= 300, blank=True)
     School= models.CharField(max_length= 300, blank=True)
     level= models.CharField(max_length= 300, blank=True)
-    date_registered=models.DateTimeField(auto_now_add=True)
+    date_registered=models.DateTimeField(auto_now=True)
     Attended=models.BooleanField(default=False)
     programme=models.ForeignKey(Programme, on_delete=models.CASCADE, blank=True, null=True) 
     

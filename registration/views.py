@@ -39,7 +39,7 @@ def Submitregistrationform(request,programme_id):
     School = subdata['School']
     level = subdata['level']
 
-    registereddata, created = data.objects.get_or_create(name=name,programme=programme)
+    registereddata, created = data.objects.get_or_create(name=name)
     registereddata.gender = gender
     registereddata.address = address
     registereddata.Phonenumber = Phonenumber
@@ -49,6 +49,7 @@ def Submitregistrationform(request,programme_id):
     registereddata.Church = church
     registereddata.Zone = zone
     registereddata.level = level
+    registereddata.programme = programme
     registereddata.save()
 
     print(registereddata)

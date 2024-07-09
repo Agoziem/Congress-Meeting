@@ -10,7 +10,7 @@ class DataAdmin(admin.ModelAdmin):
     list_display=('id','name','Occupation','date_registered','Attended')
     ordering=('name','date_registered')
     search_fields=('id','name','Zone','gender','Church','Occupation','School','level',)
-    list_filter=('Attended','Occupation','level','Zone','gender',)
+    list_filter=('Attended','Occupation','level','Zone','gender',"programme")
 
 @admin.register(Subcription)
 class SubAdmin(admin.ModelAdmin):
