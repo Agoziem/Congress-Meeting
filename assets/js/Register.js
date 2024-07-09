@@ -101,6 +101,7 @@ function searchByName() {
           const li = document.createElement("li");
           li.textContent = item.name;
           li.addEventListener("click", () => showDetails(item.id));
+          li.style.cursor = "pointer";
           resultsList.appendChild(li);
         });
         document.getElementById("searchResults").style.display = "block";

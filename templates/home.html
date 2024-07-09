@@ -1,6 +1,19 @@
 {% extends 'base.html' %} {% load static %} {% block content%}
-<!-- Header Section & Count Down-->
-<section class="bg-dark mt-2" style="border-bottom: orange 2px solid">
+
+<!-- Hero Section -->
+<section class="herosection">
+  <div>
+    <h1 class="p-2">Gathering of Believers, Students and Teenagers</h1>
+    <div class="d-flex justify-content-center">
+      <a href="{% url 'registration:register' %}" class="px-5"
+        >Click to Register</a
+      >
+    </div>
+  </div>
+</section>
+
+<!-- About Student Forum -->
+<section class="bg-dark" style="border-bottom: orange 2px solid">
   <div class="container p-4">
     <div class="d-md-flex justify-content-between align-items-center">
       <div class="mb-2 mb-md-0 ps-2" style="color: orange">
@@ -11,36 +24,16 @@
           DIOCESE ON THE NIGER
         </span>
       </div>
-      <div class="align-items-center pe-2" style="color: orange">
-        <!-- only for superuser -->
-        {% if user.is_superuser %}
-        <a href="/admin" class="text-light text-decoration-none" target="_blank"
-          ><i class="bi bi-lock-fill h4 me-1" style="color: orange"></i> Admin
-        </a>
-        {% endif %}
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Hero Section -->
-<section class="herosection">
-  <div>
-    <h1>Gathering of Believers, Students and Teenagers</h1>
-    <div class="d-flex justify-content-center">
-      <a href="{% url 'registration:register' %}" class="px-5">Click to Register</a>
     </div>
   </div>
 </section>
 
 <!-- from the desk of the Cordinator -->
-<section id="about" class="p-5 py-2">
+<section id="about" class="p-3 p-md-5 py-2">
   <div class="container">
     <!-- Congress Countdown -->
     <div class="countdown my-3">
-      <div class="text-center my-2" style="font-size: 25px">
-        Count down to Students Congress 2024
-      </div>
+      <h3 class="text-center">Count down to Students Congress 2024</h3>
       <div class="d-flex justify-content-center align-items-center">
         <div class="Nrule d-none d-md-block"></div>
         <div
@@ -121,8 +114,8 @@
             src="{{ coordinator.photo.url }}"
             alt="Coordinator Photo"
             class="rounded-circle shadow-sm"
-            width="300px"
-            height="300px"
+            width="250px"
+            height="250px"
             style="
               border: orange 4px solid;
               object-fit: cover;
@@ -151,9 +144,9 @@
   </div>
   <div>
     <p class="text-secondary text-center mx-auto mb-4" style="max-width: 700px">
-      The Congress is a gathering of students and teenagers under the ACM
-      Awada Archdeaconry , it is a time of refreshing and empowerment for the
-      students and teenagers in the Archdeaconry
+      The Congress is a gathering of students and teenagers under the ACM Awada
+      Archdeaconry , it is a time of refreshing and empowerment for the students
+      and teenagers in the Archdeaconry
     </p>
   </div>
   <div class="container px-0">
@@ -215,10 +208,9 @@
             >
           </div>
         </div>
-        <div class="container p-5 p-md-0 mt-4">
-          <div class="mb-2" style="font-size: 25px; font-weight: 500">
-            Programme features
-          </div>
+        <div class="container p-2 p-md-0 mt-4">
+          <h4 class="mb-3">Programme features</h4>
+
           <div class="multiplerule mb-3 d-flex">
             <div class="Nrule"></div>
             <div class="Nrule2"></div>
@@ -258,7 +250,7 @@
 
 <!-- Streaming and Platorms -->
 <hr />
-<section class="my-5">
+<section class="my-5 px-3 px-md-0">
   <div class="text-center mt-4 mt-md-0">
     <!-- <video controls loop>
                   <source src="{% static 'videos/Acm congress.mp4'%}" type="video/mp4">
@@ -329,8 +321,8 @@
             src="{{ speaker.photo.url }}"
             alt=""
             class="rounded-circle shadow-sm"
-            width="300px"
-            height="300px"
+            width="250px"
+            height="250px"
             style="
               border: orange 4px solid;
               object-fit: cover;
