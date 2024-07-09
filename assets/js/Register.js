@@ -64,7 +64,7 @@ function submitsubformdata() {
     level: Regform.level.value,
   };
   const programme_id = document.getElementById("programme_id").value;
-  var url = `/registration/Submitregistrationform/${programme_id}`;
+  var url = `/registration/Submitregistrationform/${programme_id}/`;
   fetch(url, {
     method: "POST",
     headers: {
