@@ -32,7 +32,14 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 # DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['127.0.0.1','congress-meeting-production.up.railway.app','www.acmstudentsforumawada.org','acmstudentsforumawada.org']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'congress-meeting-production.up.railway.app',
+    'www.acmstudentsforumawada.org',
+    'acmstudentsforumawada.org', 
+    "acmawadaarchstudentscongress.org",
+    'www.acmawadaarchstudentscongress.org'
+    ]
 
 
 # Application definition
