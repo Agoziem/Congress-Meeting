@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+import dj_database_url
+from django.contrib import messages
 import os
 from decouple import config
 
@@ -36,10 +38,10 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'congress-meeting-production.up.railway.app',
     'www.acmstudentsforumawada.org',
-    'acmstudentsforumawada.org', 
+    'acmstudentsforumawada.org',
     "acmawadaarchstudentscongress.org",
     'www.acmawadaarchstudentscongress.org'
-    ]
+]
 
 
 # Application definition
@@ -68,13 +70,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-from django.contrib import messages
 MESSAGE_TAGS = {
-			messages.DEBUG: 'alert-secondary',
-			messages.INFO: 'alert-info',
-			messages.SUCCESS: 'alert-success',
-			messages.WARNING: 'alert-warning',
-			messages.ERROR: 'alert-danger',
+    messages.DEBUG: 'alert-secondary',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
 }
 
 ROOT_URLCONF = 'Congressapp.urls'
@@ -119,8 +120,7 @@ DATABASES = {
 #     }
 # }
 
-import dj_database_url
-db_from_env=dj_database_url.config(conn_max_age=600)
+db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
 DJANGO_ADMIN_LOGS_DELETABLE = True
@@ -173,15 +173,15 @@ USE_TZ = True
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', default='')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY', default='')
 AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME', default='')
-AWS_S3_CUSTOM_DOMAIN='%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_OBJECT_PARAMETERS={'CacheControl':'max-age=86400'}
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 
 
 AWS_LOCATION = 'static'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "assets"),]
-STATIC_URL='https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN,AWS_LOCATION)
-STATICFILES_STORAGE= 'storages.backends.s3boto3.S3Boto3Storage'
-DEFAULT_FILE_STORAGE='Congressapp.storages.MediaStore'
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'Congressapp.storages.MediaStore'
 
 
 # if os.getcwd() == '/app':
@@ -193,6 +193,6 @@ JAZZMIN_SETTINGS = {
     "site_logo_classes": "img-circle",
     "login_logo": None,
     "copyright": "Student Congress 2023",
-    "show_ui_builder":True,
+    "show_ui_builder": True,
     # "custom_css": "css/admin.css",
 }
