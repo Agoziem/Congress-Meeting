@@ -10,7 +10,7 @@ def register(request):
     zones=Zone.objects.all()
     levels=Level.objects.all()
     Occupation=Status.objects.all()
-    programme = Programme.objects.all().order_by("updated_at").first()
+    programme = Programme.objects.all().order_by("-updated_at").first()
     context={
         'zones':zones,
         'levels':levels,
