@@ -8,7 +8,7 @@ import json
 
 def home_view(request):
     link=Streaminglink.objects.all()
-    programme=Programme.objects.all().order_by("updated_at").first()
+    programme=Programme.objects.all().order_by("-updated_at").first()
     programmeevents = ProgrammeEvent.objects.filter(programme=programme)
     speakers=Speaker.objects.filter(programme=programme)
     coordinator=Coordinator.objects.filter(programme=programme).first()
